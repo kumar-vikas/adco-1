@@ -1,0 +1,67 @@
+.bodyTxt {
+  background: #accf46;
+  box-shadow: inset 0 0 8px 4px #89bc40;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  padding: 10px 40px;
+  font-family: var(--activityName);
+  color: #fff;
+  font-size: 20px;
+  margin: 35px 230px 0px 0px;
+  float: right;
+  width: 170px;
+}
+
+#vidCont {
+  position: relative;
+  top: 15px;
+  text-align: left;
+}
+
+#vidCont div img {
+  transform: scale(-1);
+  height: 80px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#vidCont div button {
+  font-family: var(--activityName);
+  width: 70px;
+  height: 35px;
+  background-color: #8d338f;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#vidCont div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 10px;
+  border-radius: 40px;
+  top: -50px;
+  left: 365px;
+  z-index: 1;
+}
+
+#vidPlayer-pre {
+  width: 445px;
+  height: 250px;
+  border: 10px solid #858484;
+  margin-left: 265px;
+}
+
+.letter-formed{
+  transform: scale(1) !important;
+  margin: -31px 0px 0px -29px !important;
+  height: 60px;
+  width: auto !important; 
+}
+
+/* .activity-base{
+    background-image: url(../images/activity-bg-image-2.jpg);
+} */

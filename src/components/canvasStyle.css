@@ -1,0 +1,40 @@
+.parentCont {
+  position: relative;
+}
+
+.btnControl {
+  position: absolute;
+  right: 10px;
+  top: -22px;
+}
+
+#canBack {
+  /* background-color: #fff; */
+  display: inline-block;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  background-color: white;
+  background-position-x: 50%;
+}
+
+.btnControl .buttons {
+  width: 45px;
+  height: 45px;
+  margin-left: 5px;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.btnControl .buttons:focus {
+  transform: scale(1.1);
+}
+
+.btnControl button:first-child {
+  background-image: url(../images/pencil-2.png);
+  background-size: cover;
+}
+
+.btnControl button:nth-child(2) {
+  background-image: url(../images/eraser.png);
+  background-size: cover;
+}
