@@ -14,8 +14,16 @@ function Test(props) {
     color: "#0000ff",
     width: 12,
   };
-  
+  console.log(props, props.bgImg);
   const [can, setCan] = useState(null);
+
+  var canStyle = {
+    border: "1px solid #333",
+  };
+
+  var canBackS = {
+    backgroundSize: "contain",
+  };
 
   useEffect(() => {
     init();
@@ -29,6 +37,8 @@ function Test(props) {
     canvas.setDimensions({ width: width, height: height });
 
     setCan({ can: canvas });
+
+    // console.log(props.canprops, can);
   }
 
   function ccd() {

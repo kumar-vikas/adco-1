@@ -1,18 +1,25 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import "./practice.css";
 import infoBtn from "../images/info-btn.png";
-import upperBtn from "../images/upper.png";
-import lowerBtn from "../images/lower.png";
+import curUpper from "../images/upper.png";
+import curLower from "../images/lower.png";
+import preCurLower from "../images/pre-cur-lower.png";
+import preCurUpper from "../images/pre-cur-upper.png";
 import { NavLink } from 'react-router-dom';
 import { MyConsumer } from './context';
+import info143 from "../images/info-i143.png";
 
 function UpperLowerScreen(props){
+	const [state, setStateHelp] = useState({help:"Choose a letter to begin!",
+    infDiagVis:"none"
+  });
 	var actImg = null;
 	var func = null;
-
+	var lowerBtn,upperBtn;
+	
 	useEffect(()=>{
 		props.setVisibility(props.history);
-		document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";
+		document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";		
 	}, [])
 
 	function getTColor(){
@@ -24,7 +31,7 @@ function UpperLowerScreen(props){
 						if(cc.includes("-")){
 							cc = cc.replace("-", "");
 						}
-
+						
 						var r = document.documentElement;
 						r.style.setProperty("--tabColors", a.getImg[cc].tColor);
 					}
@@ -35,11 +42,14 @@ function UpperLowerScreen(props){
 	}
 
 	function abc(){
+		
 		return <MyConsumer>
 		  {
 		  (a) => {
+				
 				func = a.func;
 				if(a.activeTab != null){
+					
 					var cc = a.activeTab.replace(" ", "");
 					if(cc.includes("-")){
 						cc = cc.replace("-", "");
@@ -51,6 +61,46 @@ function UpperLowerScreen(props){
 		}
 		</MyConsumer>
 	  }
+		function getBtnType(type){
+			if(type == "upper"){
+			return <MyConsumer>
+		  {
+				(a) => {
+					if(a.activeTab != null){
+						var cc = a.activeTab.replace(" ", "");
+						if(cc.startsWith("Pre")){							
+							return <img src={preCurUpper} alt=""></img>;
+						}else{
+							return <img src={curUpper} alt=""></img>;
+						}
+					}
+				}				
+			}			
+			</MyConsumer>			
+			}else{
+			return <MyConsumer>
+		  {
+				(a) => {
+					if(a.activeTab != null){
+						var cc = a.activeTab.replace(" ", "");
+						if(cc.startsWith("Pre")){
+							return <img src={preCurLower} alt=""></img>;
+						}else{
+							return <img src={curLower} alt=""></img>;
+						}
+					}
+				}				
+			}	
+			</MyConsumer>
+			}
+			
+		}
+
+
+	  function openDialog(){
+		var vis = state.infDiagVis=="flex" ? "none" : "flex";    
+		setStateHelp({...state, infDiagVis:vis})
+	}
 
     return(
         <div className="activity-base">
@@ -59,23 +109,31 @@ function UpperLowerScreen(props){
 	</div>
   	<div className="activity-base-inner">
   		<div className="activity-head">
-		  <a className="btn-icon oragnge-btn info-btn">
+		  <a className="btn-icon oragnge-btn info-btn" onClick={openDialog}>
 		    <img alt="" src={infoBtn}/>
 		  </a>
 		  <div className="activity-Title">
 			  {abc()}
-		    {/* <p className="activity-name">Pre-Cursive</p> */}
 		  </div>
+		</div>
+
+		<div className="info-dialog" style={{display:state.infDiagVis}}>
+			<div>
+				<img src={info143} alt="" />
+			</div>
+			<div>
+				{state.help}
+			</div>
 		</div>
 
 		<div className="letterFormText">Letter Formation</div>
 		<div id="letterCont">
 			<div className="upperLowerCont">
 				<NavLink to={{pathname:"/LetterFormation", case:"lower"}}>
-					<div><img src={lowerBtn} alt="" />Lower Case</div>
+					<div>{getBtnType("lower")} Lower Case</div>
 				</NavLink>
 				<NavLink to={{pathname:"/LetterFormation", case:"upper"}}>
-					<div><img src={upperBtn} alt="" />Upper Case</div>
+					<div>{getBtnType("upper")} Upper Case</div>
 				</NavLink>
 			</div>
 			

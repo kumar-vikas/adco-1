@@ -16,6 +16,7 @@ class ActivityComp extends Component{
         this.setState({visible:"flex" })
         /* let videe = this.videoRef.current;
         alert(videe); */
+				console.log("-------VID");
         this.vid = document.getElementById("vidPlayer");
         console.log(this.vid)
         this.vid.src = "assets/animations/supercity_1.mp4"

@@ -4,18 +4,12 @@ import infoBtn from "../images/info-btn.png";
 import game129 from "../images/game129.png";
 import { NavLink } from 'react-router-dom';
 import { MyConsumer } from './context';
-import info143 from "../images/info-i143.png";
 
 class GameComponent extends Component{
     constructor(props){
         super(props);
 
 		this.actImg = null;
-
-		this.state = {
-			help:"Play the game and match the letters!",
-			infDiagVis:'none'
-		}
     }
 
 	componentDidMount(){
@@ -56,11 +50,6 @@ class GameComponent extends Component{
 		}
 		return tname;
 	}
-
-	openDialog=()=>{
-		this.vis = this.vis=="flex" ? "none" : "flex";
-		this.setState({infDiagVis:this.vis})
-	}
 	
     render(){
 			var gamePath = "assets/Game/"+this.getTabName()+"/index.html";
@@ -68,7 +57,7 @@ class GameComponent extends Component{
     	<div className="activity-base" style={{backgroundImage: "url("+this.actImg+")"}}>
 			<div className="activity-base-inner">
 				<div className="activity-head">
-				<a className="btn-icon oragnge-btn info-btn" onClick={this.openDialog}>
+				<a className="btn-icon oragnge-btn info-btn">
 					<img alt="" src={infoBtn}/>
 				</a>
 				<div className="activity-Title">
@@ -79,14 +68,6 @@ class GameComponent extends Component{
 					<img width="110" src={game129} alt="" />
 				</div>
 				<div className="activity-folder">
-				<div className="info-dialog" style={{display:this.state.infDiagVis}}>
-					<div>
-					<img src={info143} alt="" />
-					</div>
-					<div>
-						{this.state.help}
-					</div>
-				</div>
 					<div className="activity-folder-bg activity-2-wrap">
 						<div className="activity-2" id="gameBG">
 							<div className="activity-name-block type5">

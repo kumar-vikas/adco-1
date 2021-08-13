@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MemoTest from "./Test";
 import "./practice.css";
 import infoBtn from "../images/info-btn.png";
 import penIcon from "../images/pencil-621.png";
 import { NavLink } from "react-router-dom";
 import { MyConsumer } from "./context";
-import info143 from "../images/info-i143.png";
 
 import upperA from "../images/letterFormation/CursiveUpper/A.png";
 import upperB from "../images/letterFormation/CursiveUpper/B.png";
@@ -61,10 +60,6 @@ import lowery from "../images/letterFormation/CursiveLower/y.png";
 import lowerz from "../images/letterFormation/CursiveLower/z.png";
 
 function LetterFormation(props) {
-  const [state, setStateHelp] = useState({help:{g:"Choose a letter to begin!",CursiveC:"Now you now how to form your letters, it’s time to join them together! Choose a two letter join to begin!", CursiveD:"Now you know how to form your letters, it’s time to join them together! Choose a three letter join to begin!"},
-    infDiagVis:"none"
-  });
-  
   var actImg = null;
   const [pattern, speed] = props.location.path ? props.location.path.split("$") : ["pat-1", ""];
   var func = null;
@@ -171,29 +166,6 @@ function LetterFormation(props) {
       </MyConsumer>
     );
   }
-  
-  function getHelpText() {
-    return (
-      <MyConsumer>
-        {(a) => {
-          if (a.activeTab != null) {
-            var cc = a.activeTab.replace(" ", "");
-            if (cc.includes("-")) {
-              cc = cc.replace("-", "");
-            }
-            
-            console.log(cc)
-            var helpText=state.help.g;
-            if(cc == "CursiveC" || cc == "CursiveD"){
-              helpText = state.help[cc];
-            }
-            return helpText;
-          }
-          return <p className="activity-name">{a.activeTab}</p>;
-        }}
-      </MyConsumer>
-    );
-  }
 
   function getLetterCase() {
     return (
@@ -210,7 +182,7 @@ function LetterFormation(props) {
     return (
       <MyConsumer>
         {(a) => {
-            var casing = a.case || "lower";
+            var casing = a.case;
             if(casing == "upper"){
               _cur = _cur.toUpperCase();
             }else{
@@ -229,11 +201,6 @@ function LetterFormation(props) {
     )
 	}
 
-  function openDialog(){
-		var vis = state.infDiagVis=="flex" ? "none" : "flex";    
-		setStateHelp({...state, infDiagVis:vis})
-	}
-
   return (
     <div className="activity-base">
       {/* <img alt="" src={pencilImg} className="pencile-image"/> */}
@@ -242,22 +209,13 @@ function LetterFormation(props) {
       </div>
       <div className="activity-base-inner">
         <div className="activity-head">
-          <a className="btn-icon oragnge-btn info-btn" onClick={openDialog}>
+          <a className="btn-icon oragnge-btn info-btn">
             <img alt="" src={infoBtn} />
           </a>
           <div className="activity-Title">
             {abc()}
           </div>
         </div>
-
-        <div className="info-dialog" style={{display:state.infDiagVis}}>
-		  		<div>
-		  			<img src={info143} alt="" />
-				  </div>
-				  <div>
-		  				{getHelpText()}
-				  </div>
-			  </div>
 
         <div className="letterFormText">Letter Formation - {getLetterCase()} Case</div>
         <div id="letterCont">

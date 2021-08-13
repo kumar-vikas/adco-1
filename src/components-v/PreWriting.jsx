@@ -9,27 +9,16 @@ import circleIcon5 from "../images/circle-5.png";
 import activityImg from "../images/activity.png";
 import { NavLink } from "react-router-dom";
 import { MyConsumer } from "./context";
-import info143 from "../images/info-i143.png";
 
 class PreWriting extends Component {
   constructor(props) {
     super(props);
     this.actImg = null;
-
-    this.state = {
-      help:"You can watch either slow or fast versions of each pattern video. Don’t forget to practice!",
-      infDiagVis:'none'
-    }
   }
 
   componentDidMount() {
     this.props.setVisibility(this.props.history);
   }
-
-  openDialog=()=>{
-		this.vis = this.vis=="flex" ? "none" : "flex";
-		this.setState({infDiagVis:this.vis})
-	}
 
   abc() {
     return <MyConsumer>
@@ -53,20 +42,12 @@ class PreWriting extends Component {
       <div className="activity-base" style={{backgroundImage: "url("+this.actImg+")"}}>
         <div className="activity-base-inner">
           <div className="activity-head">
-            <a className="btn-icon oragnge-btn info-btn" onClick={this.openDialog}>
+            <a className="btn-icon oragnge-btn info-btn">
               <img alt="" src={infoBtn} />
             </a>
             <div className="activity-Title">{this.abc()}</div>
           </div>
           <div className="activity-folder">
-          <div className="info-dialog" style={{display:this.state.infDiagVis}}>
-            <div>
-              <img src={info143} alt="" />
-            </div>
-            <div>
-                {this.state.help}
-            </div>
-          </div>
             <div className="activity-folder-bg activity-3-wrap">
               <div className="activity-3">
                 <div className="activity-name-block type3">

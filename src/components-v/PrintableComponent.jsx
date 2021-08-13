@@ -4,7 +4,6 @@ import printable from "../images/printable-icon.png";
 import printIcon from "../images/printIcon-932.png";
 import infoBtn from "../images/info-btn.png";
 import { MyConsumer } from './context';
-import info143 from "../images/info-i143.png";
 
 class PrintableComponent extends Component{
     constructor(props){
@@ -12,9 +11,6 @@ class PrintableComponent extends Component{
 		this.actImg = null;
 
 		this.state={
-			help:"Download and print a series of worksheets and printables for more handwriting resources.",
-      		infDiagVis:'none',
-
 			printIms: [{"display":"1 Worksheet: the letter a", "path":"assets/Printables/a.pdf"},
 						{"display":"2 Worksheet: the letter b", "path":"assets/Printables/b.pdf"},
 						{"display":"3 Worksheet: the letter c", "path":"assets/Printables/c.pdf"},
@@ -44,18 +40,13 @@ class PrintableComponent extends Component{
 		  </MyConsumer>    
 	  }
 
-	  openDialog=()=>{
-		this.vis = this.vis=="flex" ? "none" : "flex";
-		this.setState({infDiagVis:this.vis})
-	}
-
     render(){
         return(
     	<div className="activity-base" style={{backgroundImage: "url("+this.actImg+")"}}>
   			{/* <img alt="" src={pencilImg} className="pencile-image"/> */}
 			<div className="activity-base-inner">
 				<div className="activity-head">
-				<a className="btn-icon oragnge-btn info-btn" onClick={this.openDialog}>
+				<a className="btn-icon oragnge-btn info-btn">
 					<img alt="" src={infoBtn}/>
 				</a>
 				<div className="activity-Title">
@@ -66,14 +57,6 @@ class PrintableComponent extends Component{
 					<img width="110" src={printable} alt="" />
 				</div>
 				<div className="activity-folder">
-				<div className="info-dialog" style={{display:this.state.infDiagVis}}>
-					<div>
-					<img src={info143} alt="" />
-					</div>
-					<div>
-						{this.state.help}
-					</div>
-				</div>
 					<div className="activity-folder-bg activity-2-wrap">
 						<div className="activity-2" id="gameBG">
 							<div className="activity-name-block type5">
@@ -85,7 +68,7 @@ class PrintableComponent extends Component{
 								{
 									this.state.printIms.map((nam)=>(
 										<div className="printablesBtn">
-											<a /* href={nam.path} */ target="_blank">
+											<a href={nam.path} target="_blank">
 											<div className="print-inner">{nam.display}</div>
 											<img width="60" src={printIcon} alt="" />
 											</a>

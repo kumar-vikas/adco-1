@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MemoTest from "./Test";
 import "./practice.css";
 import infoBtn from "../images/info-btn.png";
@@ -8,14 +8,10 @@ import pat2 from "../images/pat-2-bg.png";
 import pat3 from "../images/pat-3-bg.png";
 import pat4 from "../images/pat-4-bg.png";
 import pat5 from "../images/pat-5-bg.png";
-import info143 from "../images/info-i143.png";
 
 import { MyConsumer } from "./context";
 
 function PreWritingPractice(props) {
-  const [state, setStateHelp] = useState({help:"Watch the pattern video and then try it for yourself.",
-    infDiagVis:"none"
-  });
   var actImg = null;
   var tabName="";
   const [pattern, speed] = props.location.path ? props.location.path.split("$") : ["pat-1", ""];
@@ -45,11 +41,6 @@ function PreWritingPractice(props) {
     "Cursive-5$slow": "assets/Pre-Writing/preCursive/Butterfly_slow.mp4",
     "Cursive-5$fast": "assets/Pre-Writing/preCursive/Butterfly_normal.mp4",
   };
-
-  function openDialog(){
-		var vis = state.infDiagVis=="flex" ? "none" : "flex";    
-		setStateHelp({...state, infDiagVis:vis})
-	}
 
   useEffect(() => {
     props.setVisibility(props.history);
@@ -104,7 +95,7 @@ function PreWritingPractice(props) {
       </div>
       <div className="activity-base-inner">
         <div className="activity-head">
-          <a className="btn-icon oragnge-btn info-btn" onClick={openDialog}>
+          <a className="btn-icon oragnge-btn info-btn">
             <img alt="" src={infoBtn} />
           </a>
           <div className="activity-Title">
@@ -112,15 +103,6 @@ function PreWritingPractice(props) {
             {/* <p className="activity-name">Pre-Cursive</p> */}
           </div>
         </div>
-
-        <div className="info-dialog" style={{display:state.infDiagVis}}>
-		  		<div>
-		  			<img src={info143} alt="" />
-				  </div>
-				  <div>
-		  				{state.help}
-				  </div>
-			  </div>
 
         <div className="bodyTxt">Pre-Writing</div>
         <div id="vidCont">
@@ -141,7 +123,8 @@ function PreWritingPractice(props) {
             marginLeft: 100,
             marginTop: 25,
             backColor: "#fff",
-          }} bgImg={bgimg}
+          }}
+          bgImg={bgimg}
           className="drawingTool"
         />
       </div>

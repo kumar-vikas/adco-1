@@ -18,17 +18,21 @@ class VideoComp extends Component{
         /* let videe = this.videoRef.current;
         alert(videe); */
 		var src = "";
+		console.log("VID COMP ID: ", _id);
 		if(_id == 0){
-			src = "assets/animations/supercity_1.mp4"
+			src = "assets/songs/WarmUpSong_1.mp4"
 		}else{
-			src = "assets/Letter Writing/Capital letter/Copy of G_capital_feedback3.mp4"
+			src = "assets/animations/supercity_1.mp4"
 		}
 
         this.vid = document.getElementById("vidPlayer");
         console.log(this.vid)
         this.vid.src = src;
-        this.vid.play();
-		this.vid.addEventListener("ended", this.onVideoEnded)
+				this.vid.addEventListener("canplay", ()=>{
+					this.vid.play();
+				})
+				this.vid.load();        
+				this.vid.addEventListener("ended", this.onVideoEnded)
         console.log(" video playing")
     }
 

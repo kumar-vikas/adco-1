@@ -17,7 +17,6 @@ class Precursive extends Component{
 		this.func = null;
 		this.actImg = null;
 		this.nextLink = "/LetterFormation";
-		this.info = "";
 		this.disAr= []
 
 		this.currentTabName = null;
@@ -27,7 +26,7 @@ class Precursive extends Component{
             src:this.props.src,
 			name:this.props.location.name,
 
-			help:"Select your activity to get started!",
+			help:"If you need help. Click on the information button.",
 			infDiagVis:'none'
         }
     }
@@ -35,7 +34,7 @@ class Precursive extends Component{
 	componentDidMount(){
 		this.props.setVisibility(this.props.history);
 		
-		if(this.state.name) this.func(this.state.name, "lower");
+		if(this.state.name) this.func(this.state.name);
 	}
 
 	getTColor(){
@@ -89,14 +88,11 @@ class Precursive extends Component{
 					if(cc == "PreCursiveB" || cc == "CursiveB"){
 						this.nextLink = "/UpperLowerScreen";
 					}
-					
 
 					if(a.activeTab.startsWith("Pre")){
 						this.disabledArr = a.data.nameList;
-						this.info = "Pre";
 					}else{
 						this.disabledArr = a.data.subList;
-						this.info = "Cur";
 					}
 
 					// disabling
@@ -183,7 +179,7 @@ class Precursive extends Component{
 					<div className="activity-assets">
 					  
 					<div className="activity-assets-block">
-						<NavLink to={{pathname:this.nextLink, type:this.info}} 			id="letterFormation">
+						<NavLink to={this.nextLink} id="letterFormation">
 							<div className="activity-bubble circle text">
 								<div className="">
 								<img alt="" src={act2}/>

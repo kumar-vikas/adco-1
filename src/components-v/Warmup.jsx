@@ -13,7 +13,7 @@ class Warmup extends Component{
             src:this.props.src,
             visible:'none',
 
-			help:"Follow along with our warm up video to get ready to begin handwriting.",
+			help:"If you need help. Click on the information button.",
 			infDiagVis:'none'
         }
     }
@@ -28,18 +28,24 @@ class Warmup extends Component{
         alert(videe); */
 
 		var src = "";
+		console.log("ID: ", _id);
 		if(_id == 0){
-			src = "assets/animations/supercity_1.mp4"
+			src = "assets/songs/song_1.mp4"
+			console.log("SRC: ", src);
 		}else{
 			console.log(" *********************")
-			src = "assets/Letter Writing/Capital letter/Copy of G_capital_feedback3.mp4"
+			src = "assets/animations/supercity_1.mp4"
 		}
 
-        this.vid = document.getElementById("vidPlayer");
-        console.log(this.vid)
+        this.vid = document.getElementById("vidPlayer");        
         this.vid.src = src;
-        this.vid.play();
-
+				this.vid.load();
+				console.log("LOADED: ", this.vid);
+				this.vid.addEventListener("canplay", ()=>{
+					console.log("can play: ", this.vid);
+					this.vid.play();
+				})
+				 
         console.log(" video playing")
     }
 
@@ -136,7 +142,7 @@ class Warmup extends Component{
 				    <div className="video-frame">
 				    	<div className="video-frame-inner">
 						<div style={{display: this.state.visible }} className="vidCont">
-							<video controls id="vidPlayer" ref={this.videoRef} src=''></video>
+							<video controls id="vidPlayer" type="video/mp4" ref={this.videoRef} src=''></video>
 							{/* <button onClick={()=>this.closeVideo()} id="closeBtn">&#10008;</button> */}
 						</div>
 				    	</div>

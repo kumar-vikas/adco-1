@@ -1,0 +1,137 @@
+/*** Cover Base ****/
+.cover-base {
+  max-width: 1294px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: url(../images/cover-bg.png);
+  height: 813px;
+  background-size: 100% 100%;
+  position: relative;
+}
+.cover-base ul {
+  list-style-type: none;
+  padding: 5px;
+  margin: 0;
+  margin: 320px 0 0 475px;
+  height: 420px;
+  overflow: auto;
+}
+.cover-base ul li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+}
+.cover-base .btn-wrappper > .btn-icon,
+.cover-base .btn-wrappper > .btn-icon:hover,
+.cover-base .btn-wrappper > .btn-icon:focus {
+  min-width: 55px;
+  max-width: 55px;
+  height: 55px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.cover-base .btn-wrappper > .btn-icon img {
+  width: 27px;
+  margin: 7px auto 0 3px;
+}
+
+.cover-base .btn-wrappper {
+  background: transparent;
+  border: 3px solid transparent;
+  border-radius: 50px 20px 20px 50px;
+  /* padding: 3px 40px 0 8px; */
+  margin-left: 40px;
+  cursor: pointer;
+  display: flex;
+  min-height: 50px;
+  width: 290px;
+  align-items: center;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.animated {
+  transition: transform 0.3s;
+}
+
+.main-menu-btn {
+  position: absolute !important;
+  right: -20px;
+}
+
+/* .selected-topic {
+  background-color: #1164b1;
+  border: 3px solid #fff !important;
+} */
+.cover-base .btn-wrappper:hover {
+  background: #0164b1;
+  border: 3px solid #fff;
+}
+
+.cover-base .btn-wrappper:hover .main-menu-btn {
+  transform: rotate(90deg);
+  background: #09b9ed;
+  box-shadow: inset 0 0 8px 4px #098fba;
+}
+
+.small-btn-wrap {
+  display: inline-block;
+  vertical-align: middle;
+  visibility: hidden;
+  text-align: left;
+}
+
+.cover-base .btn-wrappper:hover .small-btn-wrap {
+  visibility: visible;
+}
+.small-btn-wrap .btn-icon {
+  display: inline-flex;
+  margin: 4px 10px;
+}
+.cover-base li > .chaper-name {
+  width: 300px;
+  text-align: right;
+}
+.cover-logo {
+  position: absolute;
+  right: 70px;
+  top: 70px;
+  width: 160px;
+}
+.cover-logo img {
+  width: 100%;
+}
+
+.toc-cont {
+  display: flex;
+  margin-top: 314px;
+  margin-left: 515px;
+  height: 420px;
+}
+
+.lftToc {
+  height: 420px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 360px;
+}
+.chaper-name {
+  padding: 2px 14px;
+  border-radius: 14px;
+  border: 3px solid;
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.subToc {
+  height: 420px;
+  width: 280px;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  padding-top: 0;
+}
+.subToc .btn-wrappper{
+  margin-left: 10px;
+  width: 220px;
+}
