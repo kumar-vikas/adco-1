@@ -9,7 +9,7 @@ import info143 from "../images/info-i143.png";
 import { MyConsumer } from "./context";
 
 function LetterFormPractice(props) {
-  const [state, setStateHelp] = useState({help:"Watch the letter video and then try for yourself.",
+  const [state, setStateHelp] = useState({help:{g:"Watch the letter video and then try for yourself.",CursiveC:"Watch the join video and then try for yourself.",CursiveD:"Watch the join video and then try for yourself."},
     infDiagVis:"none"
   });
   var func = null;
@@ -17,7 +17,7 @@ function LetterFormPractice(props) {
   var vidFold = "";
   var path = "";
   var cc = "";
-
+  console.log(props);
   var obj = {"Cursive-lower-a": "assets/LetterWriting/cursive-lower/a.mp4",
   "Cursive-lower-b": "assets/LetterWriting/cursive-lower/b.mp4",
   "Cursive-lower-c": "assets/LetterWriting/cursive-lower/c.mp4",
@@ -121,16 +121,51 @@ function LetterFormPractice(props) {
   "PreCursive-upper-w": "assets/LetterWriting/pre-cursive-upper/W.mp4",
   "PreCursive-upper-x": "assets/LetterWriting/pre-cursive-upper/X.mp4",
   "PreCursive-upper-y": "assets/LetterWriting/pre-cursive-upper/Y.mp4",
-  "PreCursive-upper-z": "assets/LetterWriting/pre-cursive-upper/Z.mp4"};
+  "PreCursive-upper-z": "assets/LetterWriting/pre-cursive-upper/Z.mp4",
+  "CursiveC1": "assets/LetterWriting/Cursive2/bu.mp4",
+  "CursiveC2": "assets/LetterWriting/Cursive2/da.mp4",
+  "CursiveC3": "assets/LetterWriting/Cursive2/fo.mp4",
+  "CursiveC4": "assets/LetterWriting/Cursive2/ga.mp4",
+  "CursiveC5": "assets/LetterWriting/Cursive2/ki.mp4",
+  "CursiveC6": "assets/LetterWriting/Cursive2/me.mp4",
+  "CursiveC7": "assets/LetterWriting/Cursive2/ne.mp4",
+  "CursiveC8": "assets/LetterWriting/Cursive2/pe.mp4",
+  "CursiveC9": "assets/LetterWriting/Cursive2/ro.mp4",
+  "CursiveC10": "assets/LetterWriting/Cursive2/ru.mp4",
+  "CursiveC11": "assets/LetterWriting/Cursive2/si.mp4",
+  "CursiveC12": "assets/LetterWriting/Cursive2/to.mp4",
+  "CursiveC13": "assets/LetterWriting/Cursive2/yu.mp4",
+  "CursiveC14": "assets/LetterWriting/Cursive2/zi.mp4",
+  "CursiveD1": "assets/LetterWriting/Cursive3/bin.mp4",
+  "CursiveD2": "assets/LetterWriting/Cursive3/bus.mp4",
+  "CursiveD3": "assets/LetterWriting/Cursive3/car.mp4",
+  "CursiveD4": "assets/LetterWriting/Cursive3/dog.mp4",
+  "CursiveD5": "assets/LetterWriting/Cursive3/fox.mp4",
+  "CursiveD6": "assets/LetterWriting/Cursive3/hop.mp4",
+  "CursiveD7": "assets/LetterWriting/Cursive3/jar.mp4",
+  "CursiveD8": "assets/LetterWriting/Cursive3/kid.mp4",
+  "CursiveD9": "assets/LetterWriting/Cursive3/leg.mp4",
+  "CursiveD10": "assets/LetterWriting/Cursive3/red.mp4",
+  "CursiveD11": "assets/LetterWriting/Cursive3/rip.mp4",
+  "CursiveD12": "assets/LetterWriting/Cursive3/run.mp4",
+  "CursiveD13": "assets/LetterWriting/Cursive3/sun.mp4",
+  "CursiveD14": "assets/LetterWriting/Cursive3/ten.mp4"
+
+};
 
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";
 
-    vidFold = cc.substr(0, cc.length-1);
-    props.location.case = props.location.case || "lower"
-    path = obj[vidFold+"-"+props.location.case+"-"+props.location.curLetter]
-//    console.log(path, vidFold+"-"+props.location.case+"-"+props.location.curLetter)
+    if(props.location.tab === "CursiveC" || props.location.tab === "CursiveD"){
+      path = obj[props.location.tab + props.location.curLetter];
+    }else{
+      vidFold = cc.substr(0, cc.length-1);
+      props.location.case = props.location.case || "lower"
+      path = obj[vidFold+"-"+props.location.case+"-"+props.location.curLetter]
+      //console.log(path, vidFold+"-"+props.location.case+"-"+props.location.curLetter)
+      
+    }
     document.getElementById("vidPlayer-pre").src = path;
   }, []);
 
@@ -152,6 +187,27 @@ function LetterFormPractice(props) {
 			}
 		</MyConsumer>
 	}
+
+  function getHelpText() {
+    return (
+      <MyConsumer>
+        {(a) => {
+          if (a.activeTab != null) {
+            var cc = a.activeTab.replace(" ", "");
+            if (cc.includes("-")) {
+              cc = cc.replace("-", "");
+            }
+            var helpText=state.help.g;
+            if(cc == "CursiveC" || cc == "CursiveD"){
+              helpText = state.help[cc];
+            }
+            return helpText;
+          }
+          return <p className="activity-name">{a.activeTab}</p>;
+        }}
+      </MyConsumer>
+    );
+  }
 
   function abc() {
     return (
@@ -196,7 +252,7 @@ function LetterFormPractice(props) {
 		  			<img src={info143} alt="" />
 				  </div>
 				  <div>
-		  				{state.help}
+            {getHelpText()}
 				  </div>
 			  </div>
         

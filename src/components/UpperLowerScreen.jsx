@@ -10,12 +10,11 @@ import { MyConsumer } from './context';
 import info143 from "../images/info-i143.png";
 
 function UpperLowerScreen(props){
-	const [state, setStateHelp] = useState({help:"Choose a letter to begin!",
+	const [state, setStateHelp] = useState({help:"Choose your level to start practicing!",
     infDiagVis:"none"
   });
 	var actImg = null;
 	var func = null;
-	var lowerBtn,upperBtn;
 	
 	useEffect(()=>{
 		props.setVisibility(props.history);

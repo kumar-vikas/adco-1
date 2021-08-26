@@ -6918,8 +6918,8 @@ h3 {
   width: 1280px;
   height: 960px;
   border: none;
-  -webkit-transform: translate(0, 0) !important;
-  transform: translate(0, 0) !important;
+  /* -webkit-transform: translate(0, 0) !important;
+  transform: translate(0, 0) !important; */
   border-radius: 0;
   top: 0;
   left: 0;

@@ -314,6 +314,11 @@
   cursor: pointer;
 }
 
+.joined{
+  width: 150px;
+  border-radius: 40px;
+}
+
 .letterBtn img {
   position: absolute;
   margin-top: 30px;
@@ -321,6 +326,12 @@
   width: 35px;
   transform: scaleX(-1);
   cursor: pointer;
+}
+.joined .pencil-icon-small {
+  
+  margin-top: 15px;
+  margin-left: 25px;
+  
 }
 
 .letterFormText {

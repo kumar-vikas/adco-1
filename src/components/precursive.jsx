@@ -209,7 +209,7 @@ class Precursive extends Component{
 				    </div>
 					</NavLink>
 
-					<NavLink to="/PrintableComponent">
+					<NavLink to={{pathname:"/PrintableComponent", tab:this.currentTabName}}>
 				    <div className="activity-icon-wrap">
 				      <div className="activity-icon-block type2">
 				         <img alt="" src={printImg}/>

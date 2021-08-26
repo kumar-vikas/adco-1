@@ -7,19 +7,48 @@ import { MyConsumer } from './context';
 import info143 from "../images/info-i143.png";
 
 class PrintableComponent extends Component{
+		
     constructor(props){
         super(props)
 		this.actImg = null;
-
+		this.tabName = props.location.tab.replace(" ","");
+		this.tabName = this.tabName.replace("-", "");
 		this.state={
 			help:"Download and print a series of worksheets and printables for more handwriting resources.",
       		infDiagVis:'none',
 
-			printIms: [{"display":"1 Worksheet: the letter a", "path":"assets/Printables/a.pdf"},
-						{"display":"2 Worksheet: the letter b", "path":"assets/Printables/b.pdf"},
-						{"display":"3 Worksheet: the letter c", "path":"assets/Printables/c.pdf"},
-						{"display":"4 Worksheet: the letter d", "path":"assets/Printables/d.pdf"}
-					  ]
+			printIms: {
+									"PreCursiveA":[
+										{"display":"1 Worksheet: Pre Cursive A", "path":"assets/Printables/TeacherAssessment-CursiveA.pdf"}
+					  			],
+									"PreCursiveB":[
+										{"display":"1 Worksheet: Pre Cursive B", "path":"assets/Printables/TeacherAssessment-CursiveB.pdf"}
+					  			],
+									"PreCursiveC":[
+										{"display":"1 Worksheet: Pre Cursive C", "path":"assets/Printables/TeacherAssessment-CursiveC.pdf"}
+					  			],
+									"PreCursiveD":[
+										{"display":"1 Worksheet: Pre Cursive D", "path":"assets/Printables/TeacherAssessment-CursiveD.pdf"}
+					  			],
+									"CursiveA":[
+										{"display":"1 Worksheet: Cursive A", "path":"assets/Printables/TeacherAssessment-CursiveA.pdf"}
+					  			],
+									"CursiveB":[
+										{"display":"1 Worksheet: Cursive B", "path":"assets/Printables/TeacherAssessment-CursiveB.pdf"}
+					  			],
+									"CursiveC":[
+										{"display":"1 Worksheet: Cursive C", "path":"assets/Printables/TeacherAssessment-CursiveC.pdf"}
+					  			],
+									"CursiveD":[
+										{"display":"1 Worksheet: Cursive D", "path":"assets/Printables/TeacherAssessment-CursiveD.pdf"}
+					  			],
+									"CursiveE":[
+										{"display":"1 Worksheet: Cursive E", "path":"assets/Printables/TeacherAssessment-CursiveE.pdf"}
+					  			],
+									"CursiveF":[
+										{"display":"1 Worksheet: Cursive F", "path":"assets/Printables/TeacherAssessment-CursiveF.pdf"}
+					  			],
+							}
 		}
     }
 
@@ -36,9 +65,10 @@ class PrintableComponent extends Component{
 				if(cc.includes("-")){
 				  cc = cc.replace("-", "");
 				}
+				this.tabName = cc;
 				this.actImg = a.getImg[cc].a5;
 			  }
-			  return <p className="activity-name">{a.activeTab}</p>
+				return <p className="activity-name">{a.activeTab}</p>
 			}
 		  }
 		  </MyConsumer>    
@@ -50,7 +80,7 @@ class PrintableComponent extends Component{
 	}
 
     render(){
-        return(
+			  return(
     	<div className="activity-base" style={{backgroundImage: "url("+this.actImg+")"}}>
   			{/* <img alt="" src={pencilImg} className="pencile-image"/> */}
 			<div className="activity-base-inner">
@@ -81,11 +111,10 @@ class PrintableComponent extends Component{
 							</div>
 							
 							<div className="print-frame-inner">
-
 								{
-									this.state.printIms.map((nam)=>(
+									this.state.printIms[this.tabName].map((nam)=>(
 										<div className="printablesBtn">
-											<a /* href={nam.path} */ target="_blank">
+											<a href={nam.path} target="_blank">
 											<div className="print-inner">{nam.display}</div>
 											<img width="60" src={printIcon} alt="" />
 											</a>

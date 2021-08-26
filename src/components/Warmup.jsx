@@ -31,16 +31,12 @@ class Warmup extends Component{
 		if(_id == 0){
 			src = "assets/animations/supercity_1.mp4"
 		}else{
-			console.log(" *********************")
-			src = "assets/Letter Writing/Capital letter/Copy of G_capital_feedback3.mp4"
+			src = "assets/songs/song_1.mp4"
 		}
 
         this.vid = document.getElementById("vidPlayer");
-        console.log(this.vid)
         this.vid.src = src;
         this.vid.play();
-
-        console.log(" video playing")
     }
 
 	closeVideo = () =>{

@@ -43,7 +43,7 @@
           ui-event="{ended: 'player.onUnitBGEnded()'}"
           ng-show="(data.bgType === 'video')"
         ></video>
-        <div
+        <div id="act-wrap"
           class="contentArea"
           ng-class="{activityDisplay: (player.showActivity), gameMode:(player.isGame)}"
         >
@@ -115,7 +115,14 @@
         <div class="bounce3"></div>
       </div>
     </div>
+   
     <script src="scripts/vendor.e4d6f939.js"></script>
     <script src="scripts/scripts.1a81f4be.js"></script>
+    <script>
+      window.onload = function (){
+        var ele = document.getElementById("act-wrap");
+        ele.webkitTransform = ele.style.transform = 'translate(0,0)';
+      }
+    </script>
   </body>
 </html>

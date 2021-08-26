@@ -60,6 +60,36 @@ import lowerx from "../images/letterFormation/CursiveLower/x.png";
 import lowery from "../images/letterFormation/CursiveLower/y.png";
 import lowerz from "../images/letterFormation/CursiveLower/z.png";
 
+import joined21 from "../images/letterFormation/Cursive2Lettter/1.png"
+import joined22 from "../images/letterFormation/Cursive2Lettter/2.png"
+import joined23 from "../images/letterFormation/Cursive2Lettter/3.png"
+import joined24 from "../images/letterFormation/Cursive2Lettter/4.png"
+import joined25 from "../images/letterFormation/Cursive2Lettter/5.png"
+import joined26 from "../images/letterFormation/Cursive2Lettter/6.png"
+import joined27 from "../images/letterFormation/Cursive2Lettter/7.png"
+import joined28 from "../images/letterFormation/Cursive2Lettter/8.png"
+import joined29 from "../images/letterFormation/Cursive2Lettter/9.png"
+import joined210 from "../images/letterFormation/Cursive2Lettter/10.png"
+import joined211 from "../images/letterFormation/Cursive2Lettter/11.png"
+import joined212 from "../images/letterFormation/Cursive2Lettter/12.png"
+import joined213 from "../images/letterFormation/Cursive2Lettter/13.png"
+import joined214 from "../images/letterFormation/Cursive2Lettter/14.png"
+import joined31 from "../images/letterFormation/Cursive3Lettter/1.png"
+import joined32 from "../images/letterFormation/Cursive3Lettter/2.png"
+import joined33 from "../images/letterFormation/Cursive3Lettter/3.png"
+import joined34 from "../images/letterFormation/Cursive3Lettter/4.png"
+import joined35 from "../images/letterFormation/Cursive3Lettter/5.png"
+import joined36 from "../images/letterFormation/Cursive3Lettter/6.png"
+import joined37 from "../images/letterFormation/Cursive3Lettter/7.png"
+import joined38 from "../images/letterFormation/Cursive3Lettter/8.png"
+import joined39 from "../images/letterFormation/Cursive3Lettter/9.png"
+import joined310 from "../images/letterFormation/Cursive3Lettter/10.png"
+import joined311 from "../images/letterFormation/Cursive3Lettter/11.png"
+import joined312 from "../images/letterFormation/Cursive3Lettter/12.png"
+import joined313 from "../images/letterFormation/Cursive3Lettter/13.png"
+import joined314 from "../images/letterFormation/Cursive3Lettter/14.png"
+
+
 function LetterFormation(props) {
   const [state, setStateHelp] = useState({help:{g:"Choose a letter to begin!",CursiveC:"Now you now how to form your letters, it’s time to join them together! Choose a two letter join to begin!", CursiveD:"Now you know how to form your letters, it’s time to join them together! Choose a three letter join to begin!"},
     infDiagVis:"none"
@@ -70,8 +100,17 @@ function LetterFormation(props) {
   var func = null;
   var tabName = "";
 	var letterArrsmall = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  var joinedLtr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+  var currentArr;
+  var classExt="";
 	try{
 		tabName = props.state.activeTab.replace("-", "").replace(" ", "");
+    if(tabName === "CursiveC" || tabName === "CursiveD"){
+      currentArr = joinedLtr;
+      classExt = "joined";
+    }else{
+     currentArr = letterArrsmall;
+    }
 	}catch(err){}
 	var svgImg = {
 		"upperA":upperA,
@@ -127,6 +166,37 @@ function LetterFormation(props) {
     "lowery":lowery,
     "lowerz":lowerz
 	}
+  var joinedImg={
+    "CursiveC1"	:	joined21,
+    "CursiveC2"	:	joined22,
+    "CursiveC3"	:	joined23,
+    "CursiveC4"	:	joined24,
+    "CursiveC5"	:	joined25,
+    "CursiveC6"	:	joined26,
+    "CursiveC7"	:	joined27,
+    "CursiveC8"	:	joined28,
+    "CursiveC9"	:	joined29,
+    "CursiveC10"	:	joined210,
+    "CursiveC11"	:	joined211,
+    "CursiveC12"	:	joined212,
+    "CursiveC13"	:	joined213,
+    "CursiveC14"	:	joined214,
+    "CursiveD1"	:	joined31,
+    "CursiveD2"	:	joined32,
+    "CursiveD3"	:	joined33,
+    "CursiveD4"	:	joined34,
+    "CursiveD5"	:	joined35,
+    "CursiveD6"	:	joined36,
+    "CursiveD7"	:	joined37,
+    "CursiveD8"	:	joined38,
+    "CursiveD9"	:	joined39,
+    "CursiveD10"	:	joined310,
+    "CursiveD11"	:	joined311,
+    "CursiveD12"	:	joined312,
+    "CursiveD13"	:	joined313,
+    "CursiveD14"	:	joined314	
+	
+  };
 
   useEffect(() => {
     props.setVisibility(props.history);
@@ -166,6 +236,8 @@ function LetterFormation(props) {
             }
             actImg = a.getImg[cc].a3;
           }
+          
+
           return <p className="activity-name">{a.activeTab}</p>;
         }}
       </MyConsumer>
@@ -181,11 +253,9 @@ function LetterFormation(props) {
             if (cc.includes("-")) {
               cc = cc.replace("-", "");
             }
-            
-            console.log(cc)
             var helpText=state.help.g;
             if(cc == "CursiveC" || cc == "CursiveD"){
-              helpText = state.help[cc];
+              helpText = state.help[cc]; 
             }
             return helpText;
           }
@@ -206,19 +276,24 @@ function LetterFormation(props) {
       );
   }
 
+ 
 	function getChar(_cur){
     return (
       <MyConsumer>
         {(a) => {
             var casing = a.case || "lower";
+            var str = "";
+            if(tabName === "CursiveC" || tabName === "CursiveD"){
+              return <img className="join-letter-formed" src={joinedImg[tabName+_cur]}></img>
+            }
             if(casing == "upper"){
               _cur = _cur.toUpperCase();
             }else{
               _cur = _cur.toLowerCase();			
             }
-        
+            
             if(!tabName.startsWith("Pre")){
-                var str = casing + _cur;
+                str = casing + _cur;
                 return <img className="letter-formed" src={svgImg[str]}></img>
             }else{
               return _cur;
@@ -262,12 +337,12 @@ function LetterFormation(props) {
         <div className="letterFormText">Letter Formation - {getLetterCase()} Case</div>
         <div id="letterCont">
 					{
-						letterArrsmall.map(
+            currentArr.map(
 							(cur)=>(
-								<NavLink key={cur} to={{pathname:"/LetterFormPractice", curLetter:cur, case: props.location.case}}>
-									<button className="letterBtn">
+								<NavLink key={cur} to={{pathname:"/LetterFormPractice",tab:tabName, curLetter:cur, case: props.location.case}}>
+									<button className={"letterBtn "+classExt}>
 										{getChar(cur)}
-										<img src={penIcon} alt="" />
+										<img className="pencil-icon-small" src={penIcon} alt="" />
 									</button>
 								</NavLink>
 							)
