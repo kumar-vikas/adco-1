@@ -19,34 +19,64 @@ class PrintableComponent extends Component{
 
 			printIms: {
 									"PreCursiveA":[
-										{"display":"1 Worksheet: Pre Cursive A", "path":"assets/Printables/TeacherAssessment-CursiveA.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Pre-Cursive A Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Pre-Cursive-A.pdf"},
+										{"display":"Pre-Cursive A Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Pre-Cursive-A.pdf"}
 					  			],
 									"PreCursiveB":[
-										{"display":"1 Worksheet: Pre Cursive B", "path":"assets/Printables/TeacherAssessment-CursiveB.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Pre-Cursive B Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Pre-Cursive-B.pdf"},
+										{"display":"Pre-Cursive B Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Pre-Cursive-B.pdf"}
 					  			],
 									"PreCursiveC":[
-										{"display":"1 Worksheet: Pre Cursive C", "path":"assets/Printables/TeacherAssessment-CursiveC.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Pre-Cursive C Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Pre-Cursive-C.pdf"},
+										{"display":"Pre-Cursive C Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Pre-Cursive-C.pdf"}
 					  			],
 									"PreCursiveD":[
-										{"display":"1 Worksheet: Pre Cursive D", "path":"assets/Printables/TeacherAssessment-CursiveD.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Pre-Cursive D Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Pre-Cursive-D.pdf"},
+										{"display":"Pre-Cursive D Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Pre-Cursive-D.pdf"}
 					  			],
 									"CursiveA":[
-										{"display":"1 Worksheet: Cursive A", "path":"assets/Printables/TeacherAssessment-CursiveA.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Cursive A Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-A.pdf"},
+										{"display":"Cursive A Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-A.pdf"}
 					  			],
 									"CursiveB":[
-										{"display":"1 Worksheet: Cursive B", "path":"assets/Printables/TeacherAssessment-CursiveB.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Cursive B Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-B.pdf"},
+										{"display":"Cursive B Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-B.pdf"}
 					  			],
 									"CursiveC":[
-										{"display":"1 Worksheet: Cursive C", "path":"assets/Printables/TeacherAssessment-CursiveC.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Cursive C Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-C.pdf"},
+										{"display":"Cursive C Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-C.pdf"}
 					  			],
 									"CursiveD":[
-										{"display":"1 Worksheet: Cursive D", "path":"assets/Printables/TeacherAssessment-CursiveD.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Cursive D Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-D.pdf"},
+										{"display":"Cursive D Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-D.pdf"}
 					  			],
 									"CursiveE":[
-										{"display":"1 Worksheet: Cursive E", "path":"assets/Printables/TeacherAssessment-CursiveE.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Cursive E Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-E.pdf"},
+										{"display":"Cursive E Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-E.pdf"}
 					  			],
 									"CursiveF":[
-										{"display":"1 Worksheet: Cursive F", "path":"assets/Printables/TeacherAssessment-CursiveF.pdf"}
+										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
+										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
+										{"display":"Cursive F Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-F.pdf"},
+										{"display":"Cursive F Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-F.pdf"}
 					  			],
 							}
 		}
@@ -54,6 +84,27 @@ class PrintableComponent extends Component{
 
 	componentDidMount(){
 		this.props.setVisibility(this.props.history);
+	}
+	getTColor(){
+		return <MyConsumer>
+			{
+				(a) => {
+					if(a.activeTab != null){
+						let cc = a.activeTab.replace(" ", "");
+						if(cc.includes("-")){
+							cc = cc.replace("-", "");
+						}
+
+						var r = document.documentElement;
+						r.style.setProperty("--tabColors", a.getImg[cc].tColor);
+            r.style.setProperty("--tabOuter", a.getImg[cc].tOuter);
+            r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
+            
+					}
+					
+				}
+			}
+		</MyConsumer>
 	}
 
 	abc() {
@@ -127,6 +178,7 @@ class PrintableComponent extends Component{
 						</div>
 					</div>
 				</div>
+				{this.getTColor()}
 			</div>
   </div>
         )

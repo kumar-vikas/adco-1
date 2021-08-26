@@ -35,6 +35,8 @@
   --handwriting: sassoon;
 
   --tabColors: #000;
+  --tabOuter: #000;
+  --tabBorder: #000;
 }
 
 a {
@@ -149,7 +151,7 @@ body {
   padding: 6px 24px;
   display: block;
   max-width: 120px;
-  margin: -37px auto;
+  margin: -45px auto;
   position: relative;
   top: -20px;
   border: 2px solid #fff;

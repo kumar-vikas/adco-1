@@ -217,6 +217,9 @@ function LetterFormation(props) {
 
 						var r = document.documentElement;
 						r.style.setProperty("--tabColors", a.getImg[cc].tColor);
+            r.style.setProperty("--tabOuter", a.getImg[cc].tOuter);
+            r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
+            
 					}
 					
 				}
