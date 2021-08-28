@@ -19,6 +19,12 @@ class Precursive extends Component{
 		this.nextLink = "/LetterFormation";
 		this.info = "";
 		this.disAr= []
+		this.upLow = ["PreCursiveB",
+									"CursiveB",
+									"CursiveC",
+									"CursiveD",
+									"CursiveE",
+									"CursiveF"]
 
 		this.currentTabName = null;
 		this.disabledArr = [];
@@ -86,10 +92,10 @@ class Precursive extends Component{
 					this.actImg = a.getImg[cc].a1;
 					
 					this.nextLink = "/LetterFormation"
-					if(cc == "PreCursiveB" || cc == "CursiveB"){
+					if(this.upLow.indexOf(cc)>-1){
 						this.nextLink = "/UpperLowerScreen";
 					}
-					
+					this.tab = a.activeTab;
 
 					if(a.activeTab.startsWith("Pre")){
 						this.disabledArr = a.data.nameList;
@@ -183,7 +189,7 @@ class Precursive extends Component{
 					<div className="activity-assets">
 					  
 					<div className="activity-assets-block">
-						<NavLink to={{pathname:this.nextLink, type:this.info}} 			id="letterFormation">
+						<NavLink to={{pathname:this.nextLink, type:this.info , tab:this.tab}} id="letterFormation">
 							<div className="activity-bubble circle text">
 								<div className="">
 								<img alt="" src={act2}/>

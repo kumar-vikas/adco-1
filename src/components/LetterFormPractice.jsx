@@ -17,7 +17,8 @@ function LetterFormPractice(props) {
   var vidFold = "";
   var path = "";
   var cc = "";
-  console.log(props);
+  var casing;
+  
   var obj = {"Cursive-lower-a": "assets/LetterWriting/cursive-lower/a.mp4",
   "Cursive-lower-b": "assets/LetterWriting/cursive-lower/b.mp4",
   "Cursive-lower-c": "assets/LetterWriting/cursive-lower/c.mp4",
@@ -122,51 +123,56 @@ function LetterFormPractice(props) {
   "PreCursive-upper-x": "assets/LetterWriting/pre-cursive-upper/X.mp4",
   "PreCursive-upper-y": "assets/LetterWriting/pre-cursive-upper/Y.mp4",
   "PreCursive-upper-z": "assets/LetterWriting/pre-cursive-upper/Z.mp4",
-  "CursiveC1": "assets/LetterWriting/Cursive2/bu.mp4",
-  "CursiveC2": "assets/LetterWriting/Cursive2/da.mp4",
-  "CursiveC3": "assets/LetterWriting/Cursive2/fo.mp4",
-  "CursiveC4": "assets/LetterWriting/Cursive2/ga.mp4",
-  "CursiveC5": "assets/LetterWriting/Cursive2/ki.mp4",
-  "CursiveC6": "assets/LetterWriting/Cursive2/me.mp4",
-  "CursiveC7": "assets/LetterWriting/Cursive2/ne.mp4",
-  "CursiveC8": "assets/LetterWriting/Cursive2/pe.mp4",
-  "CursiveC9": "assets/LetterWriting/Cursive2/ro.mp4",
-  "CursiveC10": "assets/LetterWriting/Cursive2/ru.mp4",
-  "CursiveC11": "assets/LetterWriting/Cursive2/si.mp4",
-  "CursiveC12": "assets/LetterWriting/Cursive2/to.mp4",
-  "CursiveC13": "assets/LetterWriting/Cursive2/yu.mp4",
-  "CursiveC14": "assets/LetterWriting/Cursive2/zi.mp4",
-  "CursiveD1": "assets/LetterWriting/Cursive3/bin.mp4",
-  "CursiveD2": "assets/LetterWriting/Cursive3/bus.mp4",
-  "CursiveD3": "assets/LetterWriting/Cursive3/car.mp4",
-  "CursiveD4": "assets/LetterWriting/Cursive3/dog.mp4",
-  "CursiveD5": "assets/LetterWriting/Cursive3/fox.mp4",
-  "CursiveD6": "assets/LetterWriting/Cursive3/hop.mp4",
-  "CursiveD7": "assets/LetterWriting/Cursive3/jar.mp4",
-  "CursiveD8": "assets/LetterWriting/Cursive3/kid.mp4",
-  "CursiveD9": "assets/LetterWriting/Cursive3/leg.mp4",
-  "CursiveD10": "assets/LetterWriting/Cursive3/red.mp4",
-  "CursiveD11": "assets/LetterWriting/Cursive3/rip.mp4",
-  "CursiveD12": "assets/LetterWriting/Cursive3/run.mp4",
-  "CursiveD13": "assets/LetterWriting/Cursive3/sun.mp4",
-  "CursiveD14": "assets/LetterWriting/Cursive3/ten.mp4"
+  "CursiveJoin21": "assets/LetterWriting/Cursive2/bu.mp4",
+  "CursiveJoin22": "assets/LetterWriting/Cursive2/da.mp4",
+  "CursiveJoin23": "assets/LetterWriting/Cursive2/fo.mp4",
+  "CursiveJoin24": "assets/LetterWriting/Cursive2/ga.mp4",
+  "CursiveJoin25": "assets/LetterWriting/Cursive2/ki.mp4",
+  "CursiveJoin26": "assets/LetterWriting/Cursive2/me.mp4",
+  "CursiveJoin27": "assets/LetterWriting/Cursive2/ne.mp4",
+  "CursiveJoin28": "assets/LetterWriting/Cursive2/pe.mp4",
+  "CursiveJoin29": "assets/LetterWriting/Cursive2/ro.mp4",
+  "CursiveJoin210": "assets/LetterWriting/Cursive2/ru.mp4",
+  "CursiveJoin211": "assets/LetterWriting/Cursive2/si.mp4",
+  "CursiveJoin212": "assets/LetterWriting/Cursive2/to.mp4",
+  "CursiveJoin213": "assets/LetterWriting/Cursive2/yu.mp4",
+  "CursiveJoin214": "assets/LetterWriting/Cursive2/zi.mp4",
+  "CursiveJoin31": "assets/LetterWriting/Cursive3/bin.mp4",
+  "CursiveJoin32": "assets/LetterWriting/Cursive3/bus.mp4",
+  "CursiveJoin33": "assets/LetterWriting/Cursive3/car.mp4",
+  "CursiveJoin34": "assets/LetterWriting/Cursive3/dog.mp4",
+  "CursiveJoin35": "assets/LetterWriting/Cursive3/fox.mp4",
+  "CursiveJoin36": "assets/LetterWriting/Cursive3/hop.mp4",
+  "CursiveJoin37": "assets/LetterWriting/Cursive3/jar.mp4",
+  "CursiveJoin38": "assets/LetterWriting/Cursive3/kid.mp4",
+  "CursiveJoin39": "assets/LetterWriting/Cursive3/leg.mp4",
+  "CursiveJoin310": "assets/LetterWriting/Cursive3/red.mp4",
+  "CursiveJoin311": "assets/LetterWriting/Cursive3/rip.mp4",
+  "CursiveJoin312": "assets/LetterWriting/Cursive3/run.mp4",
+  "CursiveJoin313": "assets/LetterWriting/Cursive3/sun.mp4",
+  "CursiveJoin314": "assets/LetterWriting/Cursive3/ten.mp4"
 
 };
 
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";
-
+    var tab = props.location.tab.substr(0, props.location.tab.length-1);
+    var str="";
+    //console.log(tab, props.location.case,casing, props.location.curLetter);
     if(props.location.tab === "CursiveC" || props.location.tab === "CursiveD"){
-      path = obj[props.location.tab + props.location.curLetter];
+      str = tab+casing+props.location.curLetter;
+      path = obj[str];
+      //console.log(str, path);
     }else{
       vidFold = cc.substr(0, cc.length-1);
-      props.location.case = props.location.case || "lower"
-      path = obj[vidFold+"-"+props.location.case+"-"+props.location.curLetter]
-      //console.log(path, vidFold+"-"+props.location.case+"-"+props.location.curLetter)
-      
+      props.location.case = props.location.case || "lower";
+      str = tab+"-"+(casing + "-"+props.location.curLetter).toLowerCase();
+      path = obj[str];
+      //console.log(str, path);
     }
     document.getElementById("vidPlayer-pre").src = path;
+    func(null, props.location.case);
   }, []);
 
   function getTColor(){
@@ -178,15 +184,27 @@ function LetterFormPractice(props) {
 						if(cc.includes("-")){
 							cc = cc.replace("-", "");
 						}
-
 						var r = document.documentElement;
 						r.style.setProperty("--tabColors", a.getImg[cc].tColor);
-					}
-					
+					}	
 				}
 			}
 		</MyConsumer>
 	}
+
+  function getCasing(){
+    return <MyConsumer>
+			{
+				(a) => {
+          if(a.case){
+            casing = a.case;
+            return a.case;
+          }
+				}
+			}
+		</MyConsumer>
+    
+  }
 
   function getHelpText() {
     return (
@@ -235,7 +253,7 @@ function LetterFormPractice(props) {
   
   return (
     <div className="activity-base">
-      <img alt="" src={pencilImg} className="pencile-image" />
+      
       <div className="dailoug-block-img">
         <img alt="" src="assets/images/dialog-1.png" />
       </div>
@@ -284,6 +302,7 @@ function LetterFormPractice(props) {
         />
       </div>
       {getTColor()}
+      {getCasing()}
     </div>
   );
 }

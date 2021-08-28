@@ -167,34 +167,34 @@ function LetterFormation(props) {
     "lowerz":lowerz
 	}
   var joinedImg={
-    "CursiveC1"	:	joined21,
-    "CursiveC2"	:	joined22,
-    "CursiveC3"	:	joined23,
-    "CursiveC4"	:	joined24,
-    "CursiveC5"	:	joined25,
-    "CursiveC6"	:	joined26,
-    "CursiveC7"	:	joined27,
-    "CursiveC8"	:	joined28,
-    "CursiveC9"	:	joined29,
-    "CursiveC10"	:	joined210,
-    "CursiveC11"	:	joined211,
-    "CursiveC12"	:	joined212,
-    "CursiveC13"	:	joined213,
-    "CursiveC14"	:	joined214,
-    "CursiveD1"	:	joined31,
-    "CursiveD2"	:	joined32,
-    "CursiveD3"	:	joined33,
-    "CursiveD4"	:	joined34,
-    "CursiveD5"	:	joined35,
-    "CursiveD6"	:	joined36,
-    "CursiveD7"	:	joined37,
-    "CursiveD8"	:	joined38,
-    "CursiveD9"	:	joined39,
-    "CursiveD10"	:	joined310,
-    "CursiveD11"	:	joined311,
-    "CursiveD12"	:	joined312,
-    "CursiveD13"	:	joined313,
-    "CursiveD14"	:	joined314	
+    "CursiveJoin21"	:	joined21,
+    "CursiveJoin22"	:	joined22,
+    "CursiveJoin23"	:	joined23,
+    "CursiveJoin24"	:	joined24,
+    "CursiveJoin25"	:	joined25,
+    "CursiveJoin26"	:	joined26,
+    "CursiveJoin27"	:	joined27,
+    "CursiveJoin28"	:	joined28,
+    "CursiveJoin29"	:	joined29,
+    "CursiveJoin210"	:	joined210,
+    "CursiveJoin211"	:	joined211,
+    "CursiveJoin212"	:	joined212,
+    "CursiveJoin213"	:	joined213,
+    "CursiveJoin214"	:	joined214,
+    "CursiveJoin31"	:	joined31,
+    "CursiveJoin32"	:	joined32,
+    "CursiveJoin33"	:	joined33,
+    "CursiveJoin34"	:	joined34,
+    "CursiveJoin35"	:	joined35,
+    "CursiveJoin36"	:	joined36,
+    "CursiveJoin37"	:	joined37,
+    "CursiveJoin38"	:	joined38,
+    "CursiveJoin39"	:	joined39,
+    "CursiveJoin310"	:	joined310,
+    "CursiveJoin311"	:	joined311,
+    "CursiveJoin312"	:	joined312,
+    "CursiveJoin313"	:	joined313,
+    "CursiveJoin314"	:	joined314	
 	
   };
 
@@ -239,8 +239,6 @@ function LetterFormation(props) {
             }
             actImg = a.getImg[cc].a3;
           }
-          
-
           return <p className="activity-name">{a.activeTab}</p>;
         }}
       </MyConsumer>
@@ -272,8 +270,25 @@ function LetterFormation(props) {
     return (
       <MyConsumer>
         {(a) => {
-          var _cur = a.case == "upper" ? "Upper" : "Lower";
-          return _cur;
+          
+          var text;
+          switch (a.case){
+            case "Lower":
+              text = "Letter formation - Lower Case"
+              break;
+            case "Upper":
+              text = "Letter formation - Upper Case"
+              break;
+            case "Join2":
+              text = "Two-Letter Joins"
+              break;
+              case "Join3":
+                text = "Three-Letter Joins"
+                break;
+            default:
+              text = "Letter Formation"
+          }
+          return text;
         }        
       }</MyConsumer>
       );
@@ -285,18 +300,20 @@ function LetterFormation(props) {
       <MyConsumer>
         {(a) => {
             var casing = a.case || "lower";
-            var str = "";
+            var str = tabName.substr(0, tabName.length-1) + casing + _cur;
+            
             if(tabName === "CursiveC" || tabName === "CursiveD"){
-              return <img className="join-letter-formed" src={joinedImg[tabName+_cur]}></img>
-            }
-            if(casing == "upper"){
+              return <img className="join-letter-formed" src={joinedImg[str]}></img>
+            }            
+            if(casing == "Upper"){
               _cur = _cur.toUpperCase();
             }else{
               _cur = _cur.toLowerCase();			
             }
+            str = casing.toLowerCase() + _cur;
             
             if(!tabName.startsWith("Pre")){
-                str = casing + _cur;
+                //str = casing + _cur;
                 return <img className="letter-formed" src={svgImg[str]}></img>
             }else{
               return _cur;
@@ -337,7 +354,7 @@ function LetterFormation(props) {
 				  </div>
 			  </div>
 
-        <div className="letterFormText">Letter Formation - {getLetterCase()} Case</div>
+        <div className="letterFormText">{getLetterCase()}</div>
         <div id="letterCont">
 					{
             currentArr.map(

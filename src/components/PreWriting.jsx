@@ -94,7 +94,7 @@ class PreWriting extends Component {
                   <NavLink
                     to={{
                       pathname: "/PreWritingPractice",
-                      path: "pat-1$slow",
+                      path: "PreCursive-1$slow",
                     }}
                   >
                     <div className="activity-name-block type4 second">
@@ -136,7 +136,7 @@ class PreWriting extends Component {
                   <NavLink
                     to={{
                       pathname: "/PreWritingPractice",
-                      path: "pat-2$slow",
+                      path: "PreCursive-2$slow",
                     }}
                   >
                     <div className="activity-name-block type4 second">
@@ -178,7 +178,7 @@ class PreWriting extends Component {
                   <NavLink
                     to={{
                       pathname: "/PreWritingPractice",
-                      path: "pat-3$slow",
+                      path: "PreCursive-3$slow",
                     }}
                   >
                     <div className="activity-name-block type4 second">
@@ -217,7 +217,7 @@ class PreWriting extends Component {
                   <NavLink
                     to={{
                       pathname: "/PreWritingPractice",
-                      path: "pat-4$slow",
+                      path: "PreCursive-4$slow",
                     }}
                   >
                     <div className="activity-name-block type4 second">
@@ -256,7 +256,7 @@ class PreWriting extends Component {
                   <NavLink
                     to={{
                       pathname: "/PreWritingPractice",
-                      path: "pat-5$slow",
+                      path: "PreCursive-5$slow",
                     }}
                   >
                     <div className="activity-name-block type4 second">

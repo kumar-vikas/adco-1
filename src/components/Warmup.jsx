@@ -29,9 +29,9 @@ class Warmup extends Component{
 
 		var src = "";
 		if(_id == 0){
-			src = "assets/animations/supercity_1.mp4"
-		}else{
 			src = "assets/songs/song_1.mp4"
+		}else{
+			src = ""
 		}
 
         this.vid = document.getElementById("vidPlayer");

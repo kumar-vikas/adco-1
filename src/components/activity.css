@@ -96,6 +96,10 @@
   border-radius: 30px;
   max-width: 750px;
 }
+
+.game-frame-inner{
+  margin-top: 20px;
+}
 .activity-2 .activity-icon-wrap {
   vertical-align: middle;
   display: inline-block;
@@ -268,7 +272,7 @@
   border: 1px solid var(--tabBorder);
   border-radius: 20px;
   padding: 10px;
-  width: 320px;
+  width: 400px;
   font-size: 18px;
 }
 
@@ -395,10 +399,24 @@
   width: 160px;
 }
 
+.Join2, .Join3{
+  /* width: 300px !important; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .upperLowerCont img{
   width: 115px;
 }
+.Join2 img, .Join3 img{
+  width: 150px;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
 
+.Join2 div, .Join3 div{
+
+}
 .disabled{
   pointer-events: none;
   opacity: 0.4;

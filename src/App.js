@@ -24,38 +24,17 @@ function App(props) {
     nameList:[
       {"name":"Pre-Cursive A", "disabled":[]},
       {"name":"Pre-Cursive B", "disabled":[]},
-      {"name":"Pre-Cursive C", "disabled":["letterFormation", "games", "warmUp", "preWriting"]},
-      {"name":"Pre-Cursive D", "disabled":["letterFormation", "games", "warmUp", "preWriting"]},
-      /* {"name":"E"},
-      {"name":"F"},
-      {"name":"G"},
-      {"name":"H"},
-      {"name":"I"},
-      {"name":"J"},
-      {"name":"K"},
-      {"name":"L"},
-      {"name":"M"},
-      {"name":"N"},
-      {"name":"O"},
-      {"name":"P"},
-      {"name":"Q"},
-      {"name":"R"},
-      {"name":"S"},
-      {"name":"T"},
-      {"name":"U"},
-      {"name":"V"},
-      {"name":"W"},
-      {"name":"X"},
-      {"name":"Y"},
-      {"name":"Z"} */
+      {"name":"Pre-Cursive C", "disabled":["letterFormation"]},
+      {"name":"Pre-Cursive D", "disabled":["letterFormation"]},
+      
     ],
     subList:[
-      {"name":"Cursive A", "disabled":["preWriting"]},
-      {"name":"Cursive B", "disabled":["preWriting"]},
-      {"name":"Cursive C", "disabled":["preWriting"]},
-      {"name":"Cursive D", "disabled":["preWriting"]},
-      {"name":"Cursive E", "disabled":["letterFormation", "games", "warmUp", "preWriting"]},
-      {"name":"Cursive F", "disabled":["letterFormation", "games", "warmUp", "preWriting"]}
+      {"name":"Cursive A", "disabled":[]},
+      {"name":"Cursive B", "disabled":[]},
+      {"name":"Cursive C", "disabled":[]},
+      {"name":"Cursive D", "disabled":[]},
+      {"name":"Cursive E", "disabled":["games", "warmUp"]},
+      {"name":"Cursive F", "disabled":["games", "warmUp"]}
     ],
     activeTab: null
   });
