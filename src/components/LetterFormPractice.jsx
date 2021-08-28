@@ -18,7 +18,7 @@ function LetterFormPractice(props) {
   var path = "";
   var cc = "";
   var casing;
-  
+  var joiningTabs = ["CursiveC", "CursiveD", "CursiveE", "CursiveF"];
   var obj = {"Cursive-lower-a": "assets/LetterWriting/cursive-lower/a.mp4",
   "Cursive-lower-b": "assets/LetterWriting/cursive-lower/b.mp4",
   "Cursive-lower-c": "assets/LetterWriting/cursive-lower/c.mp4",
@@ -153,14 +153,14 @@ function LetterFormPractice(props) {
   "CursiveJoin314": "assets/LetterWriting/Cursive3/ten.mp4"
 
 };
-
+  //console.log("PROPS CASE: ", props.location.case, casing);
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";
     var tab = props.location.tab.substr(0, props.location.tab.length-1);
     var str="";
     //console.log(tab, props.location.case,casing, props.location.curLetter);
-    if(props.location.tab === "CursiveC" || props.location.tab === "CursiveD"){
+    if(joiningTabs.indexOf(props.location.tab)>-1){
       str = tab+casing+props.location.curLetter;
       path = obj[str];
       //console.log(str, path);
@@ -172,7 +172,9 @@ function LetterFormPractice(props) {
       //console.log(str, path);
     }
     document.getElementById("vidPlayer-pre").src = path;
+    //console.log("FINAL: ", props.location.case, casing);
     func(null, props.location.case);
+    //console.log("cntext set from fomr prac: ", casing, props.location.case);
   }, []);
 
   function getTColor(){
@@ -198,7 +200,7 @@ function LetterFormPractice(props) {
 				(a) => {
           if(a.case){
             casing = a.case;
-            return a.case;
+            return "";
           }
 				}
 			}
@@ -216,7 +218,7 @@ function LetterFormPractice(props) {
               cc = cc.replace("-", "");
             }
             var helpText=state.help.g;
-            if(cc == "CursiveC" || cc == "CursiveD"){
+            if(joiningTabs.indexOf(cc)>-1){
               helpText = state.help[cc];
             }
             return helpText;

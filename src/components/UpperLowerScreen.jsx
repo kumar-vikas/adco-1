@@ -31,6 +31,7 @@ function UpperLowerScreen(props) {
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url(" + actImg + ")";
     //buttons = setButtonType();
     //console.log("-----------", this.tab);
+    func(null, props.location.case);
   }, []);
 
   function getTColor() {
@@ -72,7 +73,6 @@ function UpperLowerScreen(props) {
   function getBtnType(obj) {
 		var type = Object.keys(obj)[0];
 		var cname = currentTab.substr(0,currentTab.length-1) + type;
-    //console.log("TYPE: ", type);
 		return (
 			<NavLink to={{"pathname":"/LetterFormation", case:type}}>
 				<div className={type}> <img src={icons[cname]} alt=""></img><div>{obj[type]}</div></div>

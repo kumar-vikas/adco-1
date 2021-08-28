@@ -103,15 +103,19 @@ function LetterFormation(props) {
   var joinedLtr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
   var currentArr;
   var classExt="";
+  var CurCasing="";
+  var joiningTabs = ["CursiveC", "CursiveD", "CursiveE", "CursiveF"];
+
 	try{
 		tabName = props.state.activeTab.replace("-", "").replace(" ", "");
-    if(tabName === "CursiveC" || tabName === "CursiveD"){
+    if(joiningTabs.indexOf(tabName) >-1){
       currentArr = joinedLtr;
       classExt = "joined";
     }else{
      currentArr = letterArrsmall;
     }
 	}catch(err){}
+  
 	var svgImg = {
 		"upperA":upperA,
     "upperB":upperB,
@@ -197,12 +201,15 @@ function LetterFormation(props) {
     "CursiveJoin314"	:	joined314	
 	
   };
-
+  
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url(" + actImg + ")";
-
-    func(null, props.location.case);
+    //console.log("SET COTEXT from letter formation: ", props.location.case, CurCasing);
+    //console.log("FINAL:, ", props.location.case, CurCasing);
+    var tcase = props.location.case || CurCasing;
+    props.location.case = tcase;
+    func(null, tcase);
   }, []);
 
   function getTColor(){
@@ -214,13 +221,15 @@ function LetterFormation(props) {
 						if(cc.includes("-")){
 							cc = cc.replace("-", "");
 						}
-
 						var r = document.documentElement;
 						r.style.setProperty("--tabColors", a.getImg[cc].tColor);
             r.style.setProperty("--tabOuter", a.getImg[cc].tOuter);
             r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
             
 					}
+          if(a.case!=null){
+            CurCasing = a.case;
+          }
 					
 				}
 			}
@@ -255,7 +264,7 @@ function LetterFormation(props) {
               cc = cc.replace("-", "");
             }
             var helpText=state.help.g;
-            if(cc == "CursiveC" || cc == "CursiveD"){
+            if(joiningTabs.indexOf(cc)>-1){
               helpText = state.help[cc]; 
             }
             return helpText;
@@ -270,7 +279,6 @@ function LetterFormation(props) {
     return (
       <MyConsumer>
         {(a) => {
-          
           var text;
           switch (a.case){
             case "Lower":
@@ -299,10 +307,11 @@ function LetterFormation(props) {
     return (
       <MyConsumer>
         {(a) => {
-            var casing = a.case || "lower";
+            var casing = a.case;
+            //console.log("CASING: ", casing);
             var str = tabName.substr(0, tabName.length-1) + casing + _cur;
             
-            if(tabName === "CursiveC" || tabName === "CursiveD"){
+            if(joiningTabs.indexOf(tabName)>-1){
               return <img className="join-letter-formed" src={joinedImg[str]}></img>
             }            
             if(casing == "Upper"){
@@ -369,7 +378,7 @@ function LetterFormation(props) {
 						)
 					}
         </div>
-        {getTColor()}
+        {getTColor()}          
       </div>
     </div>
   );

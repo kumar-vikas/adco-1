@@ -96,7 +96,6 @@ class MyProvider extends Component {
         CursiveE:{a1: cursiveE, a2:cursiveE2, a3:cursiveE3, a4:cursiveE4, a5:cursiveE5, a6:cursiveE6, tColor:"#34bcee",tOuter:"#009bc4", tBorder:"#fff"},
         CursiveF:{a1: cursiveF, a2:cursiveF2, a3:cursiveF3, a4:cursiveF4, a5:cursiveF5, a6:cursiveF6, tColor:"#34bcee",tOuter:"#009bc4", tBorder:"#fff"}
       }
-
     }
   }
 
