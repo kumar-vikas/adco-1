@@ -19,7 +19,10 @@ class Precursive extends Component{
 		this.nextLink = "/LetterFormation";
 		this.info = "";
 		this.disAr= []
-		this.upLow = ["PreCursiveB",
+		this.upLow = [
+									"PreCursiveB",
+									"PreCursiveC",
+									"PreCursiveD",
 									"CursiveB",
 									"CursiveC",
 									"CursiveD",
@@ -215,7 +218,7 @@ class Precursive extends Component{
 				    </div>
 					</NavLink>
 
-					<NavLink to={{pathname:"/PrintableComponent", tab:this.currentTabName}}>
+					<NavLink id="printable" to={{pathname:"/PrintableComponent", tab:this.currentTabName}}>
 				    <div className="activity-icon-wrap">
 				      <div className="activity-icon-block type2">
 				         <img alt="" src={printImg}/>

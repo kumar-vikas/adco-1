@@ -3,8 +3,8 @@ import "./practice.css";
 import infoBtn from "../images/info-btn.png";
 import CursiveUpper from "../images/upper.png";
 import CursiveLower from "../images/lower.png";
-import PreCursivLower from "../images/pre-cur-lower.png";
-import PreCursivUpper from "../images/pre-cur-upper.png";
+import PreCursiveLower from "../images/pre-cur-lower.png";
+import PreCursiveUpper from "../images/pre-cur-upper.png";
 import join2 from "../images/joinBG2.png";
 import join3 from "../images/joinBG3.png";
 import { NavLink } from "react-router-dom";
@@ -20,8 +20,8 @@ function UpperLowerScreen(props) {
 	var icons={
 		CursiveUpper:CursiveUpper,
 		CursiveLower:CursiveLower,
-		PreCursivLower:PreCursivLower,
-		PreCursivUpper:PreCursivUpper,
+		PreCursiveLower:PreCursiveLower,
+		PreCursiveUpper:PreCursiveUpper,
 		CursiveJoin2:join2,
 		CursiveJoin3:join3
 	}
@@ -32,6 +32,7 @@ function UpperLowerScreen(props) {
     //buttons = setButtonType();
     //console.log("-----------", this.tab);
     func(null, props.location.case);
+    //console.log(buttons);
   }, []);
 
   function getTColor() {
@@ -73,6 +74,7 @@ function UpperLowerScreen(props) {
   function getBtnType(obj) {
 		var type = Object.keys(obj)[0];
 		var cname = currentTab.substr(0,currentTab.length-1) + type;
+    console.log(icons, cname, icons[cname]);
 		return (
 			<NavLink to={{"pathname":"/LetterFormation", case:type}}>
 				<div className={type}> <img src={icons[cname]} alt=""></img><div>{obj[type]}</div></div>
@@ -82,11 +84,13 @@ function UpperLowerScreen(props) {
   function setButtonType(_tab) {
     var tabNames = {
       PreCursiveB: [{ "Lower": "Lower Case" }, { "Upper": "Upper Case" }],
+      PreCursiveC: [{ "Lower": "Lower Case" }, { "Upper": "Upper Case" }],
+      PreCursiveD: [{ "Lower": "Lower Case" }, { "Upper": "Upper Case" }],
       CursiveB: [{ "Lower": "Lower Case" }, { "Upper": "Upper Case" }],
-      CursiveC: [{ "Join2": "2 Letter Joins" }, { "Join3": "3 Letter Joins" }],
-      CursiveD: [{ "Join2": "2 Letter Joins" }, { "Join3": "3 Letter Joins" }],
-      CursiveE: [{ "Join2": "2 Letter Joins" }, { "Join3": "3 Letter Joins" }],
-      CursiveF: [{ "Join2": "2 Letter Joins" }, { "Join3": "3 Letter Joins" }],
+      CursiveC: [{ "Join2": "Two-Letter Joins" }, { "Join3": "Three-Letter Joins" }],
+      CursiveD: [{ "Join2": "Two-Letter Joins" }, { "Join3": "Three-Letter Joins" }],
+      CursiveE: [{ "Join2": "Two-Letter Joins" }, { "Join3": "Three-Letter Joins" }],
+      CursiveF: [{ "Join2": "Two-Letter Joins" }, { "Join3": "Three-Letter Joins" }],
     };
     
 		var cc = _tab.replace(" ", "");
@@ -97,9 +101,7 @@ function UpperLowerScreen(props) {
     buttons = tabNames[cc];
     return tabNames[cc];
   }
-  function showButton() {
-    console.log(buttons);
-  }
+  
 
   function openDialog() {
     var vis = state.infDiagVis == "flex" ? "none" : "flex";

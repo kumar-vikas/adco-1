@@ -24,8 +24,8 @@ function App(props) {
     nameList:[
       {"name":"Pre-Cursive A", "disabled":[]},
       {"name":"Pre-Cursive B", "disabled":[]},
-      {"name":"Pre-Cursive C", "disabled":["letterFormation"]},
-      {"name":"Pre-Cursive D", "disabled":["letterFormation"]},
+      {"name":"Pre-Cursive C", "disabled":[]},
+      {"name":"Pre-Cursive D", "disabled":[]},
       
     ],
     subList:[
@@ -33,7 +33,7 @@ function App(props) {
       {"name":"Cursive B", "disabled":[]},
       {"name":"Cursive C", "disabled":[]},
       {"name":"Cursive D", "disabled":[]},
-      {"name":"Cursive E", "disabled":["games", "warmUp"]},
+      {"name":"Cursive E", "disabled":["games", "printable", "warmUp"]},
       {"name":"Cursive F", "disabled":["games", "warmUp"]}
     ],
     activeTab: null
