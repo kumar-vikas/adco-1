@@ -78,7 +78,7 @@ class VideoComp extends Component{
 				    <div class="video-frame">
 				    	<div class="video-frame-inner">
 						<div style={{display: this.state.visible }} className="vidCont">
-							<video controls id="vidPlayer" ref={this.videoRef} src=''></video>
+							<video controls type="video/mp4" id="vidPlayer" ref={this.videoRef} src=''></video>
 							{/* <button onClick={()=>this.closeVideo()} id="closeBtn">&#10008;</button> */}
 						</div>
 				    	</div>

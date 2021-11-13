@@ -10,6 +10,7 @@ import activityImg from "../images/activity.png";
 import { NavLink } from "react-router-dom";
 import { MyConsumer } from "./context";
 import info143 from "../images/info-i143.png";
+import customContext from "./customContext";
 
 class PreWriting extends Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class PreWriting extends Component {
       help:"You can watch either slow or fast versions of each pattern video. Don’t forget to practice!",
       infDiagVis:'none'
     }
+
+    this.getQueryStr = window.location.search;
   }
 
   componentDidMount() {
@@ -32,6 +35,22 @@ class PreWriting extends Component {
 	}
 
   abc() {
+    if(this.getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+      var cc = params.get("tab");
+      var tabName = cc;
+      if(cc.includes("-")){
+        cc = cc.replace("-", "");
+      }
+      var cust = customContext();
+      this.actImg = cust[cc].a4;
+
+      let finalTabName = tabName.split("");
+      var ff = finalTabName.splice(finalTabName.length-1, 0, " ")
+      
+      return <p className="activity-name">{finalTabName.join("")}</p>;
+    }
+
     return <MyConsumer>
       {
         (a) =>{

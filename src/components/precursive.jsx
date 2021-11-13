@@ -9,6 +9,7 @@ import printImg from "../images/print-btn.png";
 import { NavLink } from 'react-router-dom';
 import info143 from "../images/info-i143.png";
 import { MyConsumer } from './context';
+import customContext from "./customContext";
 
 class Precursive extends Component{
 
@@ -39,6 +40,8 @@ class Precursive extends Component{
 			help:"Select your activity to get started!",
 			infDiagVis:'none'
         }
+
+		this.getQueryStr = window.location.search;
     }
     
 	componentDidMount(){

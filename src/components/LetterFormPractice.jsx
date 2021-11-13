@@ -7,6 +7,7 @@ import wPage from "../images/w-page.png";
 import vidIcon538 from "../images/vidIcon-538.png";
 import info143 from "../images/info-i143.png";
 import { MyConsumer } from "./context";
+import customContext from "./customContext";
 
 function LetterFormPractice(props) {
   const [state, setStateHelp] = useState({help:{g:"Watch the letter video and then try for yourself.",CursiveC:"Watch the join video and then try for yourself.",CursiveD:"Watch the join video and then try for yourself."},
@@ -151,30 +152,49 @@ function LetterFormPractice(props) {
   "CursiveJoin312": "assets/LetterWriting/Cursive3/run.mp4",
   "CursiveJoin313": "assets/LetterWriting/Cursive3/sun.mp4",
   "CursiveJoin314": "assets/LetterWriting/Cursive3/ten.mp4"
-
 };
-  //console.log("PROPS CASE: ", props.location.case, casing);
+
+  const getQueryStr = window.location.search;
+
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";
-    var tab = props.location.tab.substr(0, props.location.tab.length-1);
+
     var str="";
-    //console.log(tab, props.location.case,casing, props.location.curLetter);
-    if(joiningTabs.indexOf(props.location.tab)>-1){
-      str = tab+casing+props.location.curLetter;
+
+    if(getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+
+      if(joiningTabs.indexOf(params.get("tab"))>-1){
+        str = params.get("tab").substr(0, params.get("tab").length-1)+params.get("casing")+params.get("curLetter");
+      }else{
+        let newTab = params.get("tab");
+        if(newTab.includes("-")){
+          newTab = newTab.replace("-", "");
+        }
+        str = newTab.substr(0, newTab.length-1)+"-"+params.get("casing")+ "-"+params.get("curLetter").toLowerCase();
+      }
       path = obj[str];
-      //console.log(str, path);
+      console.log(str, " ******************** ");
+
     }else{
-      vidFold = cc.substr(0, cc.length-1);
-      props.location.case = props.location.case || "lower";
-      str = tab+"-"+(casing + "-"+props.location.curLetter).toLowerCase();
-      path = obj[str];
-      //console.log(str, path);
+      var tab = props.location.tab.substr(0, props.location.tab.length-1);
+
+      if(joiningTabs.indexOf(props.location.tab)>-1){
+        str = tab+casing+props.location.curLetter;
+        path = obj[str];
+      }else{
+        vidFold = cc.substr(0, cc.length-1);
+        props.location.case = props.location.case || "lower";
+        str = tab+"-"+(casing + "-"+props.location.curLetter).toLowerCase();
+        path = obj[str];
+      }
+
+      func(null, props.location.case);
     }
+
     document.getElementById("vidPlayer-pre").src = path;
-    //console.log("FINAL: ", props.location.case, casing);
-    func(null, props.location.case);
-    //console.log("cntext set from fomr prac: ", casing, props.location.case);
+    
   }, []);
 
   function getTColor(){
@@ -209,6 +229,15 @@ function LetterFormPractice(props) {
   }
 
   function getHelpText() {
+    if(getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+      let cc = params.get("tab");
+      let helpText=state.help.g;
+      if(joiningTabs.indexOf(cc)>-1){
+        helpText = state.help[cc];
+      }
+      return helpText;
+    }
     return (
       <MyConsumer>
         {(a) => {
@@ -217,19 +246,35 @@ function LetterFormPractice(props) {
             if (cc.includes("-")) {
               cc = cc.replace("-", "");
             }
+            
             var helpText=state.help.g;
             if(joiningTabs.indexOf(cc)>-1){
               helpText = state.help[cc];
             }
-            return helpText;
           }
-          return <p className="activity-name">{a.activeTab}</p>;
+          return helpText;
         }}
       </MyConsumer>
     );
   }
 
   function abc() {
+    if(getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+      var cc = params.get("tab");
+      var tabName = cc;
+      if(cc.includes("-")){
+        cc = cc.replace("-", "");
+      }
+      var cust = customContext();
+      actImg = cust[cc].a4;
+
+      let finalTabName = tabName.split("");
+      var ff = finalTabName.splice(finalTabName.length-1, 0, " ")
+      
+      return <p className="activity-name">{finalTabName.join("")}</p>;
+    }
+
     return (
       <MyConsumer>
         {(a) => {
@@ -288,7 +333,7 @@ function LetterFormPractice(props) {
             autoPlay
             controls
             id="vidPlayer-pre"
-            src=""
+            src="" type="video/mp4"
           ></video>
         </div>
 
