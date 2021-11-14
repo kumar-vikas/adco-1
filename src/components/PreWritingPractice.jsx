@@ -9,8 +9,8 @@ import pat3 from "../images/pat-3-bg.png";
 import pat4 from "../images/pat-4-bg.png";
 import pat5 from "../images/pat-5-bg.png";
 import info143 from "../images/info-i143.png";
-
 import { MyConsumer } from "./context";
+import customContext from "./customContext";
 
 function PreWritingPractice(props) {
   const [state, setStateHelp] = useState({help:"Watch the pattern video and then try it for yourself.",
@@ -46,6 +46,8 @@ function PreWritingPractice(props) {
     "Cursive-5$fast": "assets/Pre-Writing/preCursive/Butterfly_normal.mp4",
   };
 
+  const getQueryStr = window.location.search;
+
   function openDialog(){
 		var vis = state.infDiagVis=="flex" ? "none" : "flex";    
 		setStateHelp({...state, infDiagVis:vis})
@@ -53,36 +55,54 @@ function PreWritingPractice(props) {
 
   useEffect(() => {
     props.setVisibility(props.history);
-    console.log(props);
-    tabName = props.state.activeTab;
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";
+    if(getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+      tabName = params.get("tab");
+      return;
+    }
+    tabName = props.state.activeTab;
   }, []);
 
   function fetchVideo(e) {
     var cc = e.target;
+
+    if(getQueryStr.indexOf("?") > -1){
+
+    }
+    
     var tmp = tabName.replace("-","");
     tmp = tmp.split(" ")[0];
+    console.log(tmp);
     var str = pattern.replace("pat", tmp);
     let cPath = str + "$" + cc.innerHTML.toLowerCase();
     var vid = document.getElementById("vidPlayer-pre");
     vid.src = obj[cPath];
     vid.oncanplay = function(){
       vid.play();
-    }
-    
+    }    
   }
 
-  /* function abc() {
-    return (
-      <MyConsumer>{(a) => <p className="activity-name">Pre-Cursive {a.activeTab}</p>}</MyConsumer>
-    );
-  } */
-
   function abc() {
+    if(getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+      var cc = params.get("tab");
+      var tabName = cc;
+      if(cc.includes("-")){
+        cc = cc.replace("-", "");
+      }
+      var cust = customContext();
+      actImg = cust[cc].a4;
+
+      let finalTabName = tabName.split("");
+      var ff = finalTabName.splice(finalTabName.length-1, 0, " ")
+      
+      return <p className="activity-name">{finalTabName.join("")}</p>;
+    }
+
     return <MyConsumer>
       {
         (a) =>{
-          //actImg = a.getImg[a.activeTab].a4;
           if(a.activeTab != null){
             var cc = a.activeTab.replace(" ", "");
             if(cc.includes("-")){
