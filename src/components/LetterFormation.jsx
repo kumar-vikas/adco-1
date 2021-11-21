@@ -6,7 +6,60 @@ import penIcon from "../images/pencil-621.png";
 import { NavLink } from "react-router-dom";
 import { MyConsumer } from "./context";
 import info143 from "../images/info-i143.png";
+                                                    
+import PreCurUpperA from "../images/letterFormation/PreCursiveUpper/A.png";
+import PreCurUpperB from "../images/letterFormation/PreCursiveUpper/B.png";
+import PreCurUpperC from "../images/letterFormation/PreCursiveUpper/C.png";
+import PreCurUpperD from "../images/letterFormation/PreCursiveUpper/D.png";
+import PreCurUpperE from "../images/letterFormation/PreCursiveUpper/E.png";
+import PreCurUpperF from "../images/letterFormation/PreCursiveUpper/F.png";
+import PreCurUpperG from "../images/letterFormation/PreCursiveUpper/G.png";
+import PreCurUpperH from "../images/letterFormation/PreCursiveUpper/H.png";
+import PreCurUpperI from "../images/letterFormation/PreCursiveUpper/I.png";
+import PreCurUpperJ from "../images/letterFormation/PreCursiveUpper/J.png";
+import PreCurUpperK from "../images/letterFormation/PreCursiveUpper/K.png";
+import PreCurUpperL from "../images/letterFormation/PreCursiveUpper/L.png";
+import PreCurUpperM from "../images/letterFormation/PreCursiveUpper/M.png";
+import PreCurUpperN from "../images/letterFormation/PreCursiveUpper/N.png";
+import PreCurUpperO from "../images/letterFormation/PreCursiveUpper/O.png";
+import PreCurUpperP from "../images/letterFormation/PreCursiveUpper/P.png";
+import PreCurUpperQ from "../images/letterFormation/PreCursiveUpper/Q.png";
+import PreCurUpperR from "../images/letterFormation/PreCursiveUpper/R.png";
+import PreCurUpperS from "../images/letterFormation/PreCursiveUpper/S.png";
+import PreCurUpperT from "../images/letterFormation/PreCursiveUpper/T.png";
+import PreCurUpperU from "../images/letterFormation/PreCursiveUpper/U.png";
+import PreCurUpperV from "../images/letterFormation/PreCursiveUpper/V.png";
+import PreCurUpperW from "../images/letterFormation/PreCursiveUpper/W.png";
+import PreCurUpperX from "../images/letterFormation/PreCursiveUpper/X.png";
+import PreCurUpperY from "../images/letterFormation/PreCursiveUpper/Y.png";
+import PreCurUpperZ from "../images/letterFormation/PreCursiveUpper/Z.png";
 
+import PreCurLowerA from "../images/letterFormation/PreCursiveLower/a.png";
+import PreCurLowerB from "../images/letterFormation/PreCursiveLower/b.png";
+import PreCurLowerC from "../images/letterFormation/PreCursiveLower/c.png";
+import PreCurLowerD from "../images/letterFormation/PreCursiveLower/d.png";
+import PreCurLowerE from "../images/letterFormation/PreCursiveLower/e.png";
+import PreCurLowerF from "../images/letterFormation/PreCursiveLower/f.png";
+import PreCurLowerG from "../images/letterFormation/PreCursiveLower/g.png";
+import PreCurLowerH from "../images/letterFormation/PreCursiveLower/h.png";
+import PreCurLowerI from "../images/letterFormation/PreCursiveLower/i.png";
+import PreCurLowerJ from "../images/letterFormation/PreCursiveLower/j.png";
+import PreCurLowerK from "../images/letterFormation/PreCursiveLower/k.png";
+import PreCurLowerL from "../images/letterFormation/PreCursiveLower/l.png";
+import PreCurLowerM from "../images/letterFormation/PreCursiveLower/m.png";
+import PreCurLowerN from "../images/letterFormation/PreCursiveLower/n.png";
+import PreCurLowerO from "../images/letterFormation/PreCursiveLower/o.png";
+import PreCurLowerP from "../images/letterFormation/PreCursiveLower/p.png";
+import PreCurLowerQ from "../images/letterFormation/PreCursiveLower/q.png";
+import PreCurLowerR from "../images/letterFormation/PreCursiveLower/r.png";
+import PreCurLowerS from "../images/letterFormation/PreCursiveLower/s.png";
+import PreCurLowerT from "../images/letterFormation/PreCursiveLower/t.png";
+import PreCurLowerU from "../images/letterFormation/PreCursiveLower/u.png";
+import PreCurLowerV from "../images/letterFormation/PreCursiveLower/v.png";
+import PreCurLowerW from "../images/letterFormation/PreCursiveLower/w.png";
+import PreCurLowerX from "../images/letterFormation/PreCursiveLower/x.png";
+import PreCurLowerY from "../images/letterFormation/PreCursiveLower/y.png";
+import PreCurLowerZ from "../images/letterFormation/PreCursiveLower/z.png";
 import upperA from "../images/letterFormation/CursiveUpper/A.png";
 import upperB from "../images/letterFormation/CursiveUpper/B.png";
 import upperC from "../images/letterFormation/CursiveUpper/C.png";
@@ -105,6 +158,7 @@ function LetterFormation(props) {
   var classExt="";
   var CurCasing="";
   var joiningTabs = ["CursiveC", "CursiveD", "CursiveE", "CursiveF"];
+  var penClass="pencil-icon-small";
 
 	try{
 		tabName = props.state.activeTab.replace("-", "").replace(" ", "");
@@ -117,58 +171,111 @@ function LetterFormation(props) {
 	}catch(err){}
   
 	var svgImg = {
-		"upperA":upperA,
-    "upperB":upperB,
-    "upperC":upperC,
-    "upperD":upperD,
-    "upperE":upperE,
-    "upperF":upperF,
-    "upperG":upperG,
-    "upperH":upperH,
-    "upperI":upperI,
-    "upperJ":upperJ,
-    "upperK":upperK,
-    "upperL":upperL,
-    "upperM":upperM,
-    "upperN":upperN,
-    "upperO":upperO,
-    "upperP":upperP,
-    "upperQ":upperQ,
-    "upperR":upperR,
-    "upperS":upperS,
-    "upperT":upperT,
-    "upperU":upperU,
-    "upperV":upperV,
-    "upperW":upperW,
-    "upperX":upperX,
-    "upperY":upperY,
-    "upperZ":upperZ,
-    "lowera":lowera,
-    "lowerb":lowerb,
-    "lowerc":lowerc,
-    "lowerd":lowerd,
-    "lowere":lowere,
-    "lowerf":lowerf,
-    "lowerg":lowerg,
-    "lowerh":lowerh,
-    "loweri":loweri,
-    "lowerj":lowerj,
-    "lowerk":lowerk,
-    "lowerl":lowerl,
-    "lowerm":lowerm,
-    "lowern":lowern,
-    "lowero":lowero,
-    "lowerp":lowerp,
-    "lowerq":lowerq,
-    "lowerr":lowerr,
-    "lowers":lowers,
-    "lowert":lowert,
-    "loweru":loweru,
-    "lowerv":lowerv,
-    "lowerw":lowerw,
-    "lowerx":lowerx,
-    "lowery":lowery,
-    "lowerz":lowerz
+    "PreCursiveUpperA":PreCurUpperA,
+    "PreCursiveUpperB":PreCurUpperB,
+    "PreCursiveUpperC":PreCurUpperC,
+    "PreCursiveUpperD":PreCurUpperD,
+    "PreCursiveUpperE":PreCurUpperE,
+    "PreCursiveUpperF":PreCurUpperF,
+    "PreCursiveUpperG":PreCurUpperG,
+    "PreCursiveUpperH":PreCurUpperH,
+    "PreCursiveUpperI":PreCurUpperI,
+    "PreCursiveUpperJ":PreCurUpperJ,
+    "PreCursiveUpperK":PreCurUpperK,
+    "PreCursiveUpperL":PreCurUpperL,
+    "PreCursiveUpperM":PreCurUpperM,
+    "PreCursiveUpperN":PreCurUpperN,
+    "PreCursiveUpperO":PreCurUpperO,
+    "PreCursiveUpperP":PreCurUpperP,
+    "PreCursiveUpperQ":PreCurUpperQ,
+    "PreCursiveUpperR":PreCurUpperR,
+    "PreCursiveUpperS":PreCurUpperS,
+    "PreCursiveUpperT":PreCurUpperT,
+    "PreCursiveUpperU":PreCurUpperU,
+    "PreCursiveUpperV":PreCurUpperV,
+    "PreCursiveUpperW":PreCurUpperW,
+    "PreCursiveUpperX":PreCurUpperX,
+    "PreCursiveUpperY":PreCurUpperY,
+    "PreCursiveUpperZ":PreCurUpperZ,
+
+    "PreCursiveLowera":PreCurLowerA,
+    "PreCursiveLowerb":PreCurLowerB,
+    "PreCursiveLowerc":PreCurLowerC,
+    "PreCursiveLowerd":PreCurLowerD,
+    "PreCursiveLowere":PreCurLowerE,
+    "PreCursiveLowerf":PreCurLowerF,
+    "PreCursiveLowerg":PreCurLowerG,
+    "PreCursiveLowerh":PreCurLowerH,
+    "PreCursiveLoweri":PreCurLowerI,
+    "PreCursiveLowerj":PreCurLowerJ,
+    "PreCursiveLowerk":PreCurLowerK,
+    "PreCursiveLowerl":PreCurLowerL,
+    "PreCursiveLowerm":PreCurLowerM,
+    "PreCursiveLowern":PreCurLowerN,
+    "PreCursiveLowero":PreCurLowerO,
+    "PreCursiveLowerp":PreCurLowerP,
+    "PreCursiveLowerq":PreCurLowerQ,
+    "PreCursiveLowerr":PreCurLowerR,
+    "PreCursiveLowers":PreCurLowerS,
+    "PreCursiveLowert":PreCurLowerT,
+    "PreCursiveLoweru":PreCurLowerU,
+    "PreCursiveLowerv":PreCurLowerV,
+    "PreCursiveLowerw":PreCurLowerW,
+    "PreCursiveLowerx":PreCurLowerX,
+    "PreCursiveLowery":PreCurLowerY,
+    "PreCursiveLowerz":PreCurLowerZ,
+		"CursiveUpperA":upperA,
+    "CursiveUpperB":upperB,
+    "CursiveUpperC":upperC,
+    "CursiveUpperD":upperD,
+    "CursiveUpperE":upperE,
+    "CursiveUpperF":upperF,
+    "CursiveUpperG":upperG,
+    "CursiveUpperH":upperH,
+    "CursiveUpperI":upperI,
+    "CursiveUpperJ":upperJ,
+    "CursiveUpperK":upperK,
+    "CursiveUpperL":upperL,
+    "CursiveUpperM":upperM,
+    "CursiveUpperN":upperN,
+    "CursiveUpperO":upperO,
+    "CursiveUpperP":upperP,
+    "CursiveUpperQ":upperQ,
+    "CursiveUpperR":upperR,
+    "CursiveUpperS":upperS,
+    "CursiveUpperT":upperT,
+    "CursiveUpperU":upperU,
+    "CursiveUpperV":upperV,
+    "CursiveUpperW":upperW,
+    "CursiveUpperX":upperX,
+    "CursiveUpperY":upperY,
+    "CursiveUpperZ":upperZ,
+    "CursiveLowera":lowera,
+    "CursiveLowerb":lowerb,
+    "CursiveLowerc":lowerc,
+    "CursiveLowerd":lowerd,
+    "CursiveLowere":lowere,
+    "CursiveLowerf":lowerf,
+    "CursiveLowerg":lowerg,
+    "CursiveLowerh":lowerh,
+    "CursiveLoweri":loweri,
+    "CursiveLowerj":lowerj,
+    "CursiveLowerk":lowerk,
+    "CursiveLowerl":lowerl,
+    "CursiveLowerm":lowerm,
+    "CursiveLowern":lowern,
+    "CursiveLowero":lowero,
+    "CursiveLowerp":lowerp,
+    "CursiveLowerq":lowerq,
+    "CursiveLowerr":lowerr,
+    "CursiveLowers":lowers,
+    "CursiveLowert":lowert,
+    "CursiveLoweru":loweru,
+    "CursiveLowerv":lowerv,
+    "CursiveLowerw":lowerw,
+    "CursiveLowerx":lowerx,
+    "CursiveLowery":lowery,
+    "CursiveLowerz":lowerz
 	}
   var joinedImg={
     "CursiveJoin21"	:	joined21,
@@ -280,11 +387,14 @@ function LetterFormation(props) {
       <MyConsumer>
         {(a) => {
           var text;
+          console.log(a.case);
           switch (a.case){
             case "Lower":
+            case "lower":
               text = "Letter formation - Lower Case"
               break;
             case "Upper":
+            case "upper":
               text = "Letter formation - Upper Case"
               break;
             case "Join2":
@@ -301,7 +411,29 @@ function LetterFormation(props) {
       }</MyConsumer>
       );
   }
-
+  
+  function getPencilClass(cur){
+    return (
+      <MyConsumer>
+        {(a) => {
+            var casing = a.case; 
+            var cls = "";           
+            if(tabName.startsWith("PreCursive")){
+              if(casing =="Upper"){
+                cls = "pencil-icon-small mt20";
+              }else{
+                cls = "pencil-icon-small";
+              }
+            }
+            if(tabName.startsWith("Cursive")){
+                cls = "pencil-icon-small mt20";                
+            }
+            return cls;
+          }
+        }
+      </MyConsumer>
+    )
+  }
  
 	function getChar(_cur){
     return (
@@ -320,13 +452,35 @@ function LetterFormation(props) {
               _cur = _cur.toLowerCase();			
             }
             str = casing.toLowerCase() + _cur;
-            
-            if(!tabName.startsWith("Pre")){
-                //str = casing + _cur;
+            //console.log(tabName, casing, _cur);
+
+            if(tabName.startsWith("PreCursive")){
+              str = "PreCursive";
+              if(casing == "Upper"){
+                str += "Upper" + _cur.toUpperCase();
+              }else{
+                str += "Lower" + _cur.toLowerCase();
+              }
+            }else{
+              str = "Cursive";
+              if(casing == "Upper"){
+                str += "Upper" + _cur.toUpperCase();
+              }else{
+                str += "Lower" + _cur.toLowerCase();
+              }
+            }
+            console.log("STR: ", str);
+            return <img className="letter-formed" src={svgImg[str]}></img>
+            /* if(tabName.startsWith("PreCursive") && casing =="Upper"){
+              str = "PreCursiveupper"+ _cur;
+              return <img className="letter-formed" src={svgImg[str]}></img>
+            }
+            if(tabName.startsWith("Cursive")){
+                //str = casing + _cur;                
                 return <img className="letter-formed" src={svgImg[str]}></img>
             }else{
-              return _cur;
-            }
+              return <span className="char-wrap">{_cur}</span>;
+            } */
           }
         }
       </MyConsumer>
@@ -370,8 +524,8 @@ function LetterFormation(props) {
 							(cur)=>(
 								<NavLink key={cur} to={{pathname:"/LetterFormPractice",tab:tabName, curLetter:cur, case: props.location.case}}>
 									<button className={"letterBtn "+classExt}>
-										{getChar(cur)}
-										<img className="pencil-icon-small" src={penIcon} alt="" />
+										{getChar(cur)}{console.log(getPencilClass())}
+										<img className={getPencilClass(cur)} src={penIcon} alt="" />
 									</button>
 								</NavLink>
 							)

@@ -9,6 +9,13 @@ class Warmup extends Component {
     super(props);
     this.func = null;
     this.actImg = null;
+    this.vidID=1;
+    this.videos = ["Hand Warm Up.png.mp4",
+                   "Head Shoulders Knees and Toes.mp4",
+                   "Itsy Bitsy Spider.mp4",
+                   "Let's Write That Letter - V1 - Full HD.mp4",
+                   "Pencil Grip Video.mp4"
+                  ];
     this.state = {
       src: this.props.src,
       visible: "flex",
@@ -17,31 +24,71 @@ class Warmup extends Component {
       infDiagVis: "none",
     };
   }
+  
 
   componentDidMount() {
     this.props.setVisibility(this.props.history);
 		var vid = document.getElementById("vidPlayer");
 		vid.addEventListener("canplaythrough", (e)=>{			
 			vid.play();
+      vid.addEventListener("ended", this.vidEndedHandler);
 		})
+  }
+
+  playNextVideo = ()=>{
+    if(this.vidID < this.videos.length){
+      this.vidID++;
+    }
+    
+    if(this.vidID == this.videos.length){
+      document.getElementById("next").classList.add("inactive");
+    }
+    document.getElementById("prev").classList.remove("inactive");
+    this.playVideo(1);
+  }
+  playPrevVideo = ()=>{
+    if(this.vidID > 1){
+      this.vidID--;
+    }
+    if(this.vidID == 1){
+      document.getElementById("prev").classList.add("inactive");
+    }
+    document.getElementById("next").classList.remove("inactive");
+    this.playVideo(1);
   }
 
   playVideo = (_id) => {
     this.setState({ visible: "flex" });
     /* let videe = this.videoRef.current;
         alert(videe); */
-
+    var tab = document.getElementsByClassName("next-pre-wrap")[0];
     var src = "";
     if (_id == 0) {
+      tab.classList.add("invisible");
       src = "assets/songs/song_1.mp4";
     } else {
-      src = "";
+      tab.classList.remove("invisible");
+      src = "assets/videos/" + this.videos[this.vidID-1];      
     }
-
     this.vid = document.getElementById("vidPlayer");
     this.vid.src = src;
+    this.vid.load();
+    this.vid.addEventListener("canplaythrough", this.canplaythroughHandler);
     //this.vid.play();
   };
+  canplaythroughHandler = function(e){
+    const vid = e.currentTarget;
+    vid.removeEventListener("canplaythrough", this.canplaythroughHandler);
+    //vid.play();
+    vid.addEventListener("ended", this.vidEndedHandler);
+  }
+
+  vidEndedHandler = (e)=>{    
+    console.log(this.vidID, "ended..");
+    e.currentTarget.removeEventListener("ended", this.vidEndedHandler);
+    this.vidID = (this.vidID == this.videos.length-1)?0: this.vidID+1;
+    this.playVideo(1);
+  }
 
   closeVideo = () => {
     this.setState({ visible: "none" });
@@ -71,13 +118,7 @@ class Warmup extends Component {
       </MyConsumer>
     );
   }
-	playDefaultVideo(){
-		var vid = document.getElementById("vidPlayer");
-		vid.removeEventListener("canPlayThrough", this.playDefaultVideo);
-		vid.play();
-		console.log(vid);
-		//document.getElementById("vidPlayer").play();
-	}
+	
 
   abc() {
     return (
@@ -144,6 +185,11 @@ class Warmup extends Component {
                   <div className="activity-name-block type4">
                     <p className="activity-name small">Video</p>
                   </div>
+                </div>
+                <div className="next-pre-wrap invisible">
+                  <button id="prev" className="vid-nav inactive" onClick={this.playPrevVideo}></button>
+                  <div>{this.vidID}</div>
+                  <button id="next" className="vid-nav" onClick={this.playNextVideo}></button>
                 </div>
                 {this.getTColor()}
               </div>
