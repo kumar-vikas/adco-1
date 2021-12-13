@@ -74,7 +74,7 @@ function UpperLowerScreen(props) {
   function getBtnType(obj) {
 		var type = Object.keys(obj)[0];
 		var cname = currentTab.substr(0,currentTab.length-1) + type;
-    console.log(icons, cname, icons[cname]);
+    //console.log(icons, cname, icons[cname]);
 		return (
 			<NavLink to={{"pathname":"/LetterFormation", case:type}}>
 				<div className={type}> <img src={icons[cname]} alt=""></img><div>{obj[type]}</div></div>

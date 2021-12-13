@@ -16,7 +16,7 @@ class PreWriting extends Component {
   constructor(props) {
     super(props);
     this.actImg = null;
-
+    this.tabname="";
     this.state = {
       help:"You can watch either slow or fast versions of each pattern video. Don’t forget to practice!",
       infDiagVis:'none'
@@ -39,21 +39,25 @@ class PreWriting extends Component {
       const params = new URLSearchParams(window.location.search);
       var cc = params.get("tab");
       var tabName = cc;
+      this.tabname = tabName;
       if(cc.includes("-")){
         cc = cc.replace("-", "");
       }
       var cust = customContext();
-      this.actImg = cust[cc].a4;
-
-      let finalTabName = tabName.split("");
-      var ff = finalTabName.splice(finalTabName.length-1, 0, " ")
+      this.actImg = cust[cc].a2;
       
-      return <p className="activity-name">{finalTabName.join("")}</p>;
+      let finalTabName = tabName.split("");
+      finalTabName.splice(finalTabName.length-1, 0, " ");
+      //console.log("TAB!!:  ", finalTabName.join(""),tabName);
+      let fname = finalTabName.join("").replace("Pre", "Pre-");
+      //console.log(fname);
+      return <p className="activity-name">{fname}</p>;
     }
 
     return <MyConsumer>
       {
         (a) =>{
+          a.activeTab = a.activeTab || this.tabname;          
           if(a.activeTab != null){
             var cc = a.activeTab.replace(" ", "");
             if(cc.includes("-")){
@@ -61,10 +65,30 @@ class PreWriting extends Component {
             }
             this.actImg = a.getImg[cc].a2;
           }
+          console.log("title: ", a.activeTab);
           return <p className="activity-name">{a.activeTab}</p>
         }
       }
       </MyConsumer>    
+  }
+
+  getTColor() {
+    return (
+      <MyConsumer>
+        {(a) => {         
+          a.activeTab = a.activeTab || this.tabname;
+          if (a.activeTab != null) {
+            let cc = a.activeTab.replace(" ", "");
+            if (cc.includes("-")) {
+              cc = cc.replace("-", "");
+            }
+            console.log("set color..........",a.getImg[cc].tColor);
+            var r = document.documentElement;
+            r.style.setProperty("--tabColors", a.getImg[cc].tColor);
+          }
+        }}
+      </MyConsumer>
+    );
   }
 
   render() {
@@ -294,6 +318,7 @@ class PreWriting extends Component {
                     </div>
                   </NavLink>
                 </div>
+                {this.getTColor()}
               </div>
             </div>
           </div>
