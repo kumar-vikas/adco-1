@@ -6,6 +6,7 @@ import penIcon from "../images/pencil-621.png";
 import { NavLink } from "react-router-dom";
 import { MyConsumer } from "./context";
 import info143 from "../images/info-i143.png";
+import customContext from "./customContext";
                                                     
 import PreCurUpperA from "../images/letterFormation/PreCursiveUpper/A.png";
 import PreCurUpperB from "../images/letterFormation/PreCursiveUpper/B.png";
@@ -152,25 +153,15 @@ function LetterFormation(props) {
   const [pattern, speed] = props.location.path ? props.location.path.split("$") : ["pat-1", ""];
   var func = null;
   var tabName = "";
+  var tabname = "";
 	var letterArrsmall = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   var joinedLtr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
   var currentArr;
   var classExt="";
   var CurCasing="";
   var joiningTabs = ["CursiveC", "CursiveD", "CursiveE", "CursiveF"];
-  var penClass="pencil-icon-small";
-
-	try{
-		tabName = props.state.activeTab.replace("-", "").replace(" ", "");
-    if(joiningTabs.indexOf(tabName) >-1){
-      currentArr = joinedLtr;
-      classExt = "joined";
-    }else{
-     currentArr = letterArrsmall;
-    }
-	}catch(err){}
-  
-	var svgImg = {
+  const getQueryStr = window.location.search;
+  var svgImg = {
     "PreCursiveUpperA":PreCurUpperA,
     "PreCursiveUpperB":PreCurUpperB,
     "PreCursiveUpperC":PreCurUpperC,
@@ -308,21 +299,41 @@ function LetterFormation(props) {
     "CursiveJoin314"	:	joined314	
 	
   };
+	try{
+    if(getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+      var cc = params.get("tab");
+      tabName = cc;
+      CurCasing = params.get("casing");
+      var cust = customContext();
+      actImg = cust[cc].a2;
+    }else{
+      tabName = props.state.activeTab.replace("-", "").replace(" ", "");
+    }
+      if(joiningTabs.indexOf(tabName) >-1){
+        currentArr = joinedLtr;
+        classExt = "joined";
+      }else{
+      currentArr = letterArrsmall;
+      }    
+	}catch(err){}
   
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url(" + actImg + ")";
-    //console.log("SET COTEXT from letter formation: ", props.location.case, CurCasing);
-    //console.log("FINAL:, ", props.location.case, CurCasing);
-    var tcase = props.location.case || CurCasing;
-    props.location.case = tcase;
-    func(null, tcase);
+    if(getQueryStr.indexOf("?") == -1){      
+      var tcase = props.location.case || CurCasing;
+      props.location.case = tcase;
+      func(null, tcase);
+    }
+    
   }, []);
 
   function getTColor(){
 		return <MyConsumer>
 			{
 				(a) => {
+          a.activeTab = a.activeTab || tabName;
 					if(a.activeTab != null){
 						let cc = a.activeTab.replace(" ", "");
 						if(cc.includes("-")){
@@ -334,9 +345,10 @@ function LetterFormation(props) {
             r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
             
 					}
-          if(a.case!=null){
+          a.case = a.case || CurCasing;
+         /*  if(a.case!=null){
             CurCasing = a.case;
-          }
+          } */
 					
 				}
 			}
@@ -344,16 +356,34 @@ function LetterFormation(props) {
 	}
 
   function abc() {
+    if(getQueryStr.indexOf("?") > -1){
+      const params = new URLSearchParams(window.location.search);
+      var cc = params.get("tab");
+      var tabName = cc;
+      tabname = tabName;
+      if(cc.includes("-")){
+        cc = cc.replace("-", "");
+      }      
+      let finalTabName = tabName.split("");
+      finalTabName.splice(finalTabName.length-1, 0, " ");
+      //console.log("TAB!!:  ", finalTabName.join(""),tabName);
+      let fname = finalTabName.join("").replace("Pre", "Pre-");
+      //console.log(fname);
+      return <p className="activity-name">{fname}</p>;
+    }
     return (
       <MyConsumer>
         {(a) => {
+          //console.log(a.func);
           func = a.func;
+          a.activeTab = a.activeTab || tabName;
           if (a.activeTab != null) {
             var cc = a.activeTab.replace(" ", "");
             if (cc.includes("-")) {
               cc = cc.replace("-", "");
             }
             actImg = a.getImg[cc].a3;
+            //console.log("ASDFAS............");
           }
           return <p className="activity-name">{a.activeTab}</p>;
         }}
@@ -365,11 +395,13 @@ function LetterFormation(props) {
     return (
       <MyConsumer>
         {(a) => {
+          a.activeTab = a.activeTab || tabName;
           if (a.activeTab != null) {
             var cc = a.activeTab.replace(" ", "");
             if (cc.includes("-")) {
               cc = cc.replace("-", "");
             }
+            //console.log("STATE: ", state);
             var helpText=state.help.g;
             if(joiningTabs.indexOf(cc)>-1){
               helpText = state.help[cc]; 
@@ -387,7 +419,7 @@ function LetterFormation(props) {
       <MyConsumer>
         {(a) => {
           var text;
-          console.log(a.case);
+          a.case = a.case || CurCasing;
           switch (a.case){
             case "Lower":
             case "lower":
@@ -439,37 +471,33 @@ function LetterFormation(props) {
     return (
       <MyConsumer>
         {(a) => {
+            a.case = a.case || CurCasing;
             var casing = a.case;
-            //console.log("CASING: ", casing);
             var str = tabName.substr(0, tabName.length-1) + casing + _cur;
-            
             if(joiningTabs.indexOf(tabName)>-1){
               return <img className="join-letter-formed" src={joinedImg[str]}></img>
             }            
-            if(casing == "Upper"){
+            if(casing.toLowerCase() == "upper"){
               _cur = _cur.toUpperCase();
             }else{
               _cur = _cur.toLowerCase();			
             }
             str = casing.toLowerCase() + _cur;
-            //console.log(tabName, casing, _cur);
-
             if(tabName.startsWith("PreCursive")){
               str = "PreCursive";
-              if(casing == "Upper"){
+              if(casing.toLowerCase() == "upper"){
                 str += "Upper" + _cur.toUpperCase();
               }else{
                 str += "Lower" + _cur.toLowerCase();
               }
             }else{
               str = "Cursive";
-              if(casing == "Upper"){
+              if(casing.toLowerCase() == "upper"){
                 str += "Upper" + _cur.toUpperCase();
               }else{
                 str += "Lower" + _cur.toLowerCase();
               }
             }
-            console.log("STR: ", str);
             return <img className="letter-formed" src={svgImg[str]}></img>
             /* if(tabName.startsWith("PreCursive") && casing =="Upper"){
               str = "PreCursiveupper"+ _cur;
@@ -522,9 +550,9 @@ function LetterFormation(props) {
 					{
             currentArr.map(
 							(cur)=>(
-								<NavLink key={cur} to={{pathname:"/LetterFormPractice",tab:tabName, curLetter:cur, case: props.location.case}}>
+								<NavLink key={cur} to={{pathname:"/LetterFormPractice",tab:tabName, curLetter:cur, case: CurCasing}}>
 									<button className={"letterBtn "+classExt}>
-										{getChar(cur)}{console.log(getPencilClass())}
+										{getChar(cur)}
 										<img className={getPencilClass(cur)} src={penIcon} alt="" />
 									</button>
 								</NavLink>

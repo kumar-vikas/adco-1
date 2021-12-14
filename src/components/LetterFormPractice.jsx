@@ -18,7 +18,7 @@ function LetterFormPractice(props) {
   var vidFold = "";
   var path = "";
   var cc = "";
-  var casing;
+  var tabName, casing, letter;
   var joiningTabs = ["CursiveC", "CursiveD", "CursiveE", "CursiveF"];
   var obj = {"Cursive-lower-a": "assets/LetterWriting/cursive-lower/a.mp4",
   "Cursive-lower-b": "assets/LetterWriting/cursive-lower/b.mp4",
@@ -155,7 +155,7 @@ function LetterFormPractice(props) {
 };
 
   const getQueryStr = window.location.search;
-
+  var tabName, letter;
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url("+actImg+")";
@@ -164,9 +164,12 @@ function LetterFormPractice(props) {
 
     if(getQueryStr.indexOf("?") > -1){
       const params = new URLSearchParams(window.location.search);
-
+      tabName = params.get("tab").substr(0, params.get("tab").length-1);
+      letter = params.get("curLetter");
+      //console.log("TAB: ", tabName, casing);
       if(joiningTabs.indexOf(params.get("tab"))>-1){
-        str = params.get("tab").substr(0, params.get("tab").length-1)+params.get("casing")+params.get("curLetter");
+        str = tabName+casing+letter;
+        //console.log("STR: ", str);
       }else{
         let newTab = params.get("tab");
         if(newTab.includes("-")){
@@ -175,11 +178,10 @@ function LetterFormPractice(props) {
         str = newTab.substr(0, newTab.length-1)+"-"+params.get("casing")+ "-"+params.get("curLetter").toLowerCase();
       }
       path = obj[str];
-      console.log(str, " ******************** ");
+      //console.log(path, str, " ******** ");
 
     }else{
       var tab = props.location.tab.substr(0, props.location.tab.length-1);
-
       if(joiningTabs.indexOf(props.location.tab)>-1){
         str = tab+casing+props.location.curLetter;
         path = obj[str];
@@ -192,9 +194,7 @@ function LetterFormPractice(props) {
 
       func(null, props.location.case);
     }
-
     document.getElementById("vidPlayer-pre").src = path;
-    
   }, []);
 
   function getTColor(){
@@ -218,10 +218,8 @@ function LetterFormPractice(props) {
     return <MyConsumer>
 			{
 				(a) => {
-          if(a.case){
-            casing = a.case;
+            casing = casing || a.case || "lower";
             return "";
-          }
 				}
 			}
 		</MyConsumer>
@@ -263,9 +261,11 @@ function LetterFormPractice(props) {
       const params = new URLSearchParams(window.location.search);
       var cc = params.get("tab");
       var tabName = cc;
+      casing = params.get("casing");
       if(cc.includes("-")){
         cc = cc.replace("-", "");
       }
+      //console.log("CC:", cc);
       var cust = customContext();
       actImg = cust[cc].a4;
 

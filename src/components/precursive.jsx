@@ -120,7 +120,6 @@ class Precursive extends Component{
 							break;
 						}
 					}
-
 					this.disArr.forEach(element => {
 						if(document.getElementById(element)) document.getElementById(element).classList.add("disabled");
 					})
