@@ -114,13 +114,13 @@ class Precursive extends Component{
 					// disabling
 					this.disAr = [];
 					for(var i=0; i<this.disabledArr.length; i++){
-						
 						if(this.disabledArr[i].name == this.currentTabName){
-							this.disArr = this.disabledArr[i].disabled;
+							this.disAr = this.disabledArr[i].disabled;
 							break;
 						}
 					}
-					this.disArr.forEach(element => {
+					//console.log("ARR: ", disAr);
+					this.disAr.forEach(element => {
 						if(document.getElementById(element)) document.getElementById(element).classList.add("disabled");
 					})
 				}
