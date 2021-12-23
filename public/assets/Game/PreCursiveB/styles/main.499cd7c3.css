@@ -6924,6 +6924,10 @@ h3 {
   top: 0;
   left: 0;
 }
+#act-wrap{
+  -webkit-transform:  scale(1.5);
+  transform: scale(1.5);
+}
 .containerArea .contentArea.activityDisplay {
   /* transform: translate(-50%, -60%); */
 }

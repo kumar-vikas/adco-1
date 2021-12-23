@@ -5,19 +5,19 @@ import game129 from "../images/game129.png";
 import { NavLink } from 'react-router-dom';
 import { MyConsumer } from './context';
 import info143 from "../images/info-i143.png";
+import customContext from "./customContext";
 
-class GameComponent extends Component{
+class Game extends Component{
     constructor(props){
         super(props);
-
 		this.actImg = null;
-
 		this.state = {
 			help:"Play the game and match the letters!",
 			infDiagVis:'none'
 		}
+		this.getQueryStr = window.location.search;
     }
-
+	
 	componentDidMount(){
 		this.props.setVisibility(this.props.history);
 	}
@@ -31,6 +31,28 @@ class GameComponent extends Component{
 	}
 
 	abc() {
+		if(this.getQueryStr.indexOf("?") > -1){
+			var tabName = this.tabname;
+			var cc = tabName;
+			if(cc.includes("-")){
+			  cc = cc.replace("-", "");
+			}
+			var cust = customContext();
+			this.actImg = cust[cc].a5;
+			
+			let finalTabName = tabName.split("");
+			finalTabName.splice(finalTabName.length-1, 0, " ");
+			//console.log("TAB!!:  ", finalTabName.join(""),tabName);
+			let fname = finalTabName.join("").replace("Pre", "Pre-");
+			//console.log(fname);
+
+			var cust = customContext();
+			var r = document.documentElement;
+			r.style.setProperty("--tabColors", cust[cc].tColor);
+			r.style.setProperty("--tabOuter", cust[cc].tOuter);
+			r.style.setProperty("--tabBorder", cust[cc].tBorder);
+			return <p className="activity-name">{fname}</p>;
+		}
 		return <MyConsumer>
 		  {
 			(a) =>{
@@ -44,16 +66,23 @@ class GameComponent extends Component{
 			  return <p className="activity-name">{a.activeTab}</p>
 			}
 		  }
-		  </MyConsumer>    
+		  </MyConsumer>
 	  }
 		
 	getTabName(){
-		var tname="";
+		var tname="";	
+		if(this.getQueryStr.indexOf("?") > -1){
+			const params = new URLSearchParams(window.location.search);
+			this.tabname = params.get("tab");
+			console.log("TAB: ", this.tabname);
+			return this.tabname;
+		}
 		try{
 			tname = this.props.state.activeTab.replace("-", "").replace(" ","");
 		}catch(err){
-			
+			console.log("ERROR:  ", err);
 		}
+		console.log(tname);
 		return tname;
 	}
 
@@ -102,9 +131,9 @@ class GameComponent extends Component{
 					</div>
 				</div>
 			</div>
-  </div>
+  		</div>
         )
     }
 }
 
-export default GameComponent;
+export default Game;

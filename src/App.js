@@ -6,8 +6,8 @@ import VideoComp from "./components/videoComp";
 import Warmup from "./components/Warmup";
 import PreWriting from "./components/PreWriting";
 import ActivityComp from "./components/ActivityComp";
-import GameComponent from "./components/GameComponent";
-import PrintableComponent from "./components/PrintableComponent";
+import Game from "./components/Game";
+import Printable from "./components/Printable";
 import PreWritingPractice from "./components/PreWritingPractice";
 import LetterFormation from './components/LetterFormation';
 import LetterFormPractice from './components/LetterFormPractice';
@@ -187,25 +187,25 @@ function App(props) {
         />
 
         <Route 
-          path={"/GameComponent"}
+          path={"/Game"}
             exact={true}
             render = {(props)=>{
               props.setVisibility = setVisibility;
               props.state = state;
               props.updateActiveTab = updateActiveTab;
-              return <GameComponent {...props}/>
+              return <Game {...props}/>
               }}
             /* component={Precursive} */
         />
 
         <Route 
-          path={"/PrintableComponent"}
+          path={"/Printable"}
             exact={true}
             render = {(props)=>{
               props.setVisibility = setVisibility;
               props.state = state;
               props.updateActiveTab = updateActiveTab;
-              return <PrintableComponent {...props}/>
+              return <Printable {...props}/>
               }}
             /* component={Precursive} */
         />

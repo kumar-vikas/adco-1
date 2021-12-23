@@ -209,7 +209,7 @@ class Precursive extends Component{
 					</div>
 				</div>
 				<div className="activity-footer">
-					<NavLink to="/GameComponent" id="games">
+					<NavLink to="/Game" id="games">
 					<div className="activity-icon-wrap">
 				      <div className="activity-icon-block type2">
 				         <img alt="" src={gameImg}/>
@@ -220,7 +220,7 @@ class Precursive extends Component{
 				    </div>
 					</NavLink>
 
-					<NavLink id="printable" to={{pathname:"/PrintableComponent", tab:this.currentTabName}}>
+					<NavLink id="printable" to={{pathname:"/Printable", tab:this.currentTabName}}>
 				    <div className="activity-icon-wrap">
 				      <div className="activity-icon-block type2">
 				         <img alt="" src={printImg}/>

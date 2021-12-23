@@ -5,14 +5,23 @@ import printIcon from "../images/printIcon-932.png";
 import infoBtn from "../images/info-btn.png";
 import { MyConsumer } from './context';
 import info143 from "../images/info-i143.png";
+import customContext from "./customContext";
 
-class PrintableComponent extends Component{
+class Printable extends Component{
 		
     constructor(props){
         super(props)
 		this.actImg = null;
-		this.tabName = props.location.tab.replace(" ","");
-		this.tabName = this.tabName.replace("-", "");
+		this.viaURL=false;
+		//this.tabName = this.tabName.replace("-", "");
+		this.getQueryStr = window.location.search;
+		if(this.getQueryStr.indexOf("?") > -1){
+			const params = new URLSearchParams(window.location.search);
+			this.tabname = params.get("tab");
+			this.viaURL=true;
+		}else{
+			this.tabname = props.location.tab.replace(" ","").replace("-","");
+		}
 		this.state={
 			help:"Download and print a series of worksheets and printables for more handwriting resources.",
       		infDiagVis:'none',
@@ -79,13 +88,28 @@ class PrintableComponent extends Component{
 										{"display":"Cursive F Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-F.pdf"}
 					  			],
 							}
+
 		}
+		
     }
 
 	componentDidMount(){
 		this.props.setVisibility(this.props.history);
 	}
-	getTColor(){
+	getTColor(){		
+		if(this.getQueryStr.indexOf("?") > -1){
+			var tabName = this.tabname;
+			var cc = tabName;
+			if(cc.includes("-")){
+			  cc = cc.replace("-", "");
+			}
+			var cust = customContext();
+			var r = document.documentElement;
+			r.style.setProperty("--tabColors", cust[cc].tColor);
+			r.style.setProperty("--tabOuter", cust[cc].tOuter);
+			r.style.setProperty("--tabBorder", cust[cc].tBorder);
+		}
+
 		return <MyConsumer>
 			{
 				(a) => {
@@ -97,8 +121,8 @@ class PrintableComponent extends Component{
 
 						var r = document.documentElement;
 						r.style.setProperty("--tabColors", a.getImg[cc].tColor);
-            r.style.setProperty("--tabOuter", a.getImg[cc].tOuter);
-            r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
+            			r.style.setProperty("--tabOuter", a.getImg[cc].tOuter);
+            			r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
             
 					}
 					
@@ -108,17 +132,36 @@ class PrintableComponent extends Component{
 	}
 
 	abc() {
+		if(this.getQueryStr.indexOf("?") > -1){
+			var tabName = this.tabname;
+			var cc = tabName;
+			if(cc.includes("-")){
+			  cc = cc.replace("-", "");
+			}
+			var cust = customContext();
+			this.actImg = cust[cc].a5;
+			
+			let finalTabName = tabName.split("");
+			finalTabName.splice(finalTabName.length-1, 0, " ");
+			//console.log("TAB!!:  ", finalTabName.join(""),tabName);
+			let fname = finalTabName.join("").replace("Pre", "Pre-");
+			//console.log(fname);
+			return <p className="activity-name">{fname}</p>;
+		}
 		return <MyConsumer>
 		  {
 			(a) =>{
+				console.log("AAAA: ", a.activeTab);
 			  if(a.activeTab != null){
 				var cc = a.activeTab.replace(" ", "");
 				if(cc.includes("-")){
 				  cc = cc.replace("-", "");
 				}
-				this.tabName = cc;
+				this.tabname = cc;
 				this.actImg = a.getImg[cc].a5;
 			  }
+			  console.log("TAB: ", this.tabname);
+			  console.log("A: ", a.activeTab);
 				return <p className="activity-name">{a.activeTab}</p>
 			}
 		  }
@@ -131,7 +174,9 @@ class PrintableComponent extends Component{
 	}
 
     render(){
-			  return(
+		//if(!this.viaURL && )
+		console.log(this.props);
+		return(
     	<div className="activity-base" style={{backgroundImage: "url("+this.actImg+")"}}>
   			{/* <img alt="" src={pencilImg} className="pencile-image"/> */}
 			<div className="activity-base-inner">
@@ -160,10 +205,9 @@ class PrintableComponent extends Component{
 							<div className="activity-name-block type5">
 								<p className="activity-name medium">Printables</p>
 							</div>
-							
 							<div className="print-frame-inner">
 								{
-									this.state.printIms[this.tabName].map((nam)=>(
+									this.state.printIms[this.tabname].map((nam)=>(
 										<div className="printablesBtn">
 											<a href={nam.path} target="_blank">
 											<div className="print-inner">{nam.display}</div>
@@ -185,4 +229,4 @@ class PrintableComponent extends Component{
     }
 }
 
-export default PrintableComponent;
+export default Printable;
