@@ -1,0 +1,31 @@
+*{
+  box-sizing: border-box;
+}
+.disabled{
+  pointer-events: none;  
+  opacity: 0.5;
+  cursor: auto;
+}
+.inactive{
+  pointer-events: none;
+}
+.App {
+  text-align: center;
+}
+#app-container{
+  background-image: url(./images/bg.5b6b30a9.png);
+  background-size: cover;
+  width: 1280px;
+  height: 960px;
+  box-sizing: border-box;
+  transform: scale(0.45);
+  transform-origin: 0 0;
+}
+.tile-wrap{
+  width: 840px;
+  height: 730px;
+  /* background: rgb(63 81 181 / 67%); */
+  position: absolute;
+  top: 170px;
+  left: 200px;
+}

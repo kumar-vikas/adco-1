@@ -1,0 +1,35 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(0 0 0 / 70%);;
+}
+.overlay-body{
+    height: 200px;
+    width: 400px;
+    background: antiquewhite;
+    margin: 25% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 30px;
+    border-radius: 12px;
+}
+.overlay-text-wrap{
+
+
+}
+.overley-button-wrap{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    margin: 0 auto;
+    height: 50px;
+
+}
+.overley-button-wrap button{
+    width: 100px;
+    font-size: 26px;
+    cursor: pointer;
+}

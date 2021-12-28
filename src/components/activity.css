@@ -98,7 +98,12 @@
 }
 
 .game-frame-inner{
-  margin-top: 20px;
+  margin-top: 25px;
+  margin-left: 35px;
+  padding-left: 55px;
+  height: 430px;
+  width: 680px;
+  background: aliceblue;
 }
 .activity-2 .activity-icon-wrap {
   vertical-align: middle;

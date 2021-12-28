@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import animationImg from "../images/animation.png"
 import infoBtn from "../images/info-btn.png";
 import game129 from "../images/game129.png";
-import { NavLink } from 'react-router-dom';
 import { MyConsumer } from './context';
 import info143 from "../images/info-i143.png";
 import customContext from "./customContext";
+
+import MatchingGameCA from './Games/CursiveA/MatchingGame';
+import MatchingGameCB from './Games/CursiveB/MatchingGame';
+import MatchingGameCC from './Games/CursiveC/MatchingGame';
+import MatchingGameCD from './Games/CursiveD/MatchingGame';
+
+import MatchingGamePCA from './Games/PreCursiveA/MatchingGame';
+import MatchingGamePCB from './Games/PreCursiveB/MatchingGame';
+import MatchingGamePCC from './Games/PreCursiveC/MatchingGame';
+import MatchingGamePCD from './Games/PreCursiveD/MatchingGame';
+
 
 class Game extends Component{
     constructor(props){
@@ -16,6 +25,7 @@ class Game extends Component{
 			infDiagVis:'none'
 		}
 		this.getQueryStr = window.location.search;
+		this.tab="";
     }
 	
 	componentDidMount(){
@@ -32,7 +42,7 @@ class Game extends Component{
 
 	abc() {
 		if(this.getQueryStr.indexOf("?") > -1){
-			var tabName = this.tabname;
+			var tabName = this.tabname; 
 			var cc = tabName;
 			if(cc.includes("-")){
 			  cc = cc.replace("-", "");
@@ -68,7 +78,28 @@ class Game extends Component{
 		  }
 		  </MyConsumer>
 	  }
-		
+
+	getGame(){
+		switch(this.tab){
+			case "PreCursiveA":
+				return <MatchingGamePCA/>
+			case "PreCursiveB":
+				return <MatchingGamePCB/>
+			case "PreCursiveC":
+				return <MatchingGamePCC/>
+			case "PreCursiveD":
+				return <MatchingGamePCD/>
+			case "CursiveA":
+				return <MatchingGameCA/>
+			case "CursiveB":
+				return <MatchingGameCB/>
+			case "CursiveC":
+				return <MatchingGameCC/>
+			case "CursiveD":
+				return <MatchingGameCD/>
+		}
+	}
+
 	getTabName(){
 		var tname="";	
 		if(this.getQueryStr.indexOf("?") > -1){
@@ -82,6 +113,7 @@ class Game extends Component{
 		}catch(err){
 			console.log("ERROR:  ", err);
 		}
+		this.tab = tname;
 		console.log(tname);
 		return tname;
 	}
@@ -93,6 +125,7 @@ class Game extends Component{
 	
     render(){
 			var gamePath = "assets/Game/"+this.getTabName()+"/index.html";
+			console.log("TAB: ", this.tab);
 			return(
     	<div className="activity-base" style={{backgroundImage: "url("+this.actImg+")"}}>
 			<div className="activity-base-inner">
@@ -120,11 +153,10 @@ class Game extends Component{
 						<div className="activity-2" id="gameBG">
 							<div className="activity-name-block type5">
 								<p className="activity-name medium">Game</p>
-							</div>
-							
+							</div>							
 							<div className="game-frame-inner">
-								<iframe className="gameIfrm" src={gamePath} frameborder="0"></iframe>
-								{/* <button onClick={()=>this.closeVideo()} id="closeBtn">&#10008;</button> */}
+								{/* <MatchingGameCA/> */}
+								{this.getGame()}
 							</div>
 							
 						</div>

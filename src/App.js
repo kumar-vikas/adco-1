@@ -64,8 +64,7 @@ function App(props) {
 
   return (
     
-    <div className="App">
-      
+    <div className="App">      
       {state.visible ?  <div id="backBtn">
           <div className="btn-icon oragnge-btn play-btn" onClick={()=> gotoBack()}>
             <img alt="" src={backBtn}/>
