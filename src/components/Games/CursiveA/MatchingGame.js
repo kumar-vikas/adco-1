@@ -22,14 +22,20 @@ function MatchingGame() {
   const [bgMusicOn, setBGMucisOn] = useState(true);
   
   useEffect(() => {
-    var bgMusic = new Audio("./assets/audio/bgLoop.mp3");
-    bgMusic.load(); 
-    bgMusic.oncanplaythrough = function (){
-      bgMusic.play();
-    }
+    try{
+        var bgMusic = new Audio("./assets/audio/bgLoop.mp3");
+        bgMusic.load(); 
+        bgMusic.oncanplaythrough = function (){
+          bgMusic.play();
+        }
+      }catch(err){
+        bgMusic = null;
+      }         
     return () =>{
-      bgMusic.pause();
-      bgMusic = null;
+      if(bgMusic){
+        bgMusic.pause();
+        bgMusic = null;
+      }
     }
   }, []);
   
