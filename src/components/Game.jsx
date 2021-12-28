@@ -80,6 +80,7 @@ class Game extends Component{
 	  }
 
 	getGame(){
+		console.log("GET GAME FOR: ", this.tab);
 		switch(this.tab){
 			case "PreCursiveA":
 				return <MatchingGamePCA/>
@@ -101,10 +102,12 @@ class Game extends Component{
 	}
 
 	getTabName(){
+		console.log("TABNAMSSSSSSSSSSSSSS");
 		var tname="";	
 		if(this.getQueryStr.indexOf("?") > -1){
 			const params = new URLSearchParams(window.location.search);
 			this.tabname = params.get("tab");
+			this.tab = this.tabname;
 			console.log("TAB: ", this.tabname);
 			return this.tabname;
 		}
@@ -156,7 +159,8 @@ class Game extends Component{
 							</div>							
 							<div className="game-frame-inner">
 								{/* <MatchingGameCA/> */}
-								{this.getGame()}
+								{console.log("SSSS: ", this.tabname, this.tabName)}
+								{this.getGame(this.tabname)}
 							</div>
 							
 						</div>
