@@ -202,7 +202,7 @@ class Printable extends Component{
 				</div>
 					<div className="activity-folder-bg activity-2-wrap">
 						<div className="activity-2" id="gameBG">
-							<div className="activity-name-block type5">
+							<div className="activity-name-block type5 wide" >
 								<p className="activity-name medium">Printables</p>
 							</div>
 							<div className="print-frame-inner">

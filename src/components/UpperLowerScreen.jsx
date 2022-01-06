@@ -71,12 +71,12 @@ function UpperLowerScreen(props) {
       </MyConsumer>
     );
   }
-  function getBtnType(obj) {
+  function getBtnType(obj, index) {
 		var type = Object.keys(obj)[0];
 		var cname = currentTab.substr(0,currentTab.length-1) + type;
     //console.log(icons, cname, icons[cname]);
 		return (
-			<NavLink to={{"pathname":"/LetterFormation", case:type}}>
+			<NavLink key={index} to={{"pathname":"/LetterFormation", case:type}}>
 				<div className={type}> <img src={icons[cname]} alt=""></img><div>{obj[type]}</div></div>
 				</NavLink>	
 		)
@@ -132,8 +132,8 @@ function UpperLowerScreen(props) {
         <div id="letterCont">
           <div className="upperLowerCont">
 						{
-            buttons.map((item) =>(
-							getBtnType(item)
+            buttons.map((item, index) =>(
+							getBtnType(item, index)
 						))
 						}
             {/* <NavLink to={{pathname:"/LetterFormation", case:"lower"}}>

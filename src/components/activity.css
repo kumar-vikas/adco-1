@@ -409,11 +409,13 @@
   width: 150px;
   border-radius: 40px;
 }
-
+.join-letter-formed{
+  border-radius: 0 !important;
+}
 .letterBtn img {
   position: absolute;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 15px;
   width: 35px;
   transform: scaleX(-1);
   cursor: pointer;

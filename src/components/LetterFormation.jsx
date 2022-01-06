@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import MemoTest from "./Test";
 import "./practice.css";
 import infoBtn from "../images/info-btn.png";
 import penIcon from "../images/pencil-621.png";
@@ -148,7 +147,7 @@ function LetterFormation(props) {
   const [state, setStateHelp] = useState({help:{g:"Choose a letter to begin!",CursiveC:"Now you now how to form your letters, it’s time to join them together! Choose a two letter join to begin!", CursiveD:"Now you know how to form your letters, it’s time to join them together! Choose a three letter join to begin!"},
     infDiagVis:"none"
   });
-  
+  console.log("CHECK: ", props.state.activeTab, props.location.case);
   var actImg = null;
   const [pattern, speed] = props.location.path ? props.location.path.split("$") : ["pat-1", ""];
   var func = null;
@@ -321,7 +320,8 @@ function LetterFormation(props) {
   useEffect(() => {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url(" + actImg + ")";
-    if(getQueryStr.indexOf("?") == -1){      
+    if(getQueryStr.indexOf("?") == -1){  
+      console.log("USE:   ", props.location.case, CurCasing);    
       var tcase = props.location.case || CurCasing;
       props.location.case = tcase;
       func(null, tcase);
@@ -345,11 +345,11 @@ function LetterFormation(props) {
             r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
             
 					}
-          a.case = a.case || CurCasing;
-         /*  if(a.case!=null){
+          console.log("AAA: ",a);
+          if(a.case!=null){
             CurCasing = a.case;
-          } */
-					
+          } 
+					a.case = a.case || CurCasing;
 				}
 			}
 		</MyConsumer>
@@ -420,6 +420,7 @@ function LetterFormation(props) {
         {(a) => {
           var text;
           a.case = a.case || CurCasing;
+          //console.log(a.case , CurCasing);
           switch (a.case){
             case "Lower":
             case "lower":
@@ -438,6 +439,7 @@ function LetterFormation(props) {
             default:
               text = "Letter Formation"
           }
+          //console.log("text: ", text);
           return text;
         }        
       }</MyConsumer>
@@ -554,6 +556,7 @@ function LetterFormation(props) {
 									<button className={"letterBtn "+classExt}>
 										{getChar(cur)}
 										<img className={getPencilClass(cur)} src={penIcon} alt="" />
+                    {(console.log(getPencilClass(cur)))}
 									</button>
 								</NavLink>
 							)
