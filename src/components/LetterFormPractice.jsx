@@ -192,7 +192,7 @@ function LetterFormPractice(props) {
         path = obj[str];
       }
 
-      func(null, props.location.case);
+      //func(null, props.location.case);
     }
     document.getElementById("vidPlayer-pre").src = path;
   }, []);

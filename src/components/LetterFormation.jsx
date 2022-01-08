@@ -323,7 +323,8 @@ function LetterFormation(props) {
     if(getQueryStr.indexOf("?") == -1){  
       console.log("USE:   ", props.location.case, CurCasing);    
       var tcase = props.location.case || CurCasing;
-      props.location.case = tcase;
+      //props.location.case = tcase;
+      
       func(null, tcase);
     }
     
@@ -345,11 +346,11 @@ function LetterFormation(props) {
             r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
             
 					}
-          console.log("AAA: ",a);
+          console.log("AAA: =========== ",a.case);
           if(a.case!=null){
             CurCasing = a.case;
-          } 
-					a.case = a.case || CurCasing;
+          }
+					//a.case = a.case || CurCasing;
 				}
 			}
 		</MyConsumer>
@@ -419,10 +420,10 @@ function LetterFormation(props) {
       <MyConsumer>
         {(a) => {
           var text;
+          console.log(a.case, " =========== ", CurCasing);
           a.case = a.case || CurCasing;
-          //console.log(a.case , CurCasing);
+          
           switch (a.case){
-            case "Lower":
             case "lower":
               text = "Letter formation - Lower Case"
               break;
@@ -556,7 +557,6 @@ function LetterFormation(props) {
 									<button className={"letterBtn "+classExt}>
 										{getChar(cur)}
 										<img className={getPencilClass(cur)} src={penIcon} alt="" />
-                    {(console.log(getPencilClass(cur)))}
 									</button>
 								</NavLink>
 							)
