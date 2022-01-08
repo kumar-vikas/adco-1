@@ -147,7 +147,6 @@ function LetterFormation(props) {
   const [state, setStateHelp] = useState({help:{g:"Choose a letter to begin!",CursiveC:"Now you now how to form your letters, it’s time to join them together! Choose a two letter join to begin!", CursiveD:"Now you know how to form your letters, it’s time to join them together! Choose a three letter join to begin!"},
     infDiagVis:"none"
   });
-  console.log("CHECK: ", props.state.activeTab, props.location.case);
   var actImg = null;
   const [pattern, speed] = props.location.path ? props.location.path.split("$") : ["pat-1", ""];
   var func = null;
@@ -321,7 +320,6 @@ function LetterFormation(props) {
     props.setVisibility(props.history);
     document.getElementsByClassName("activity-base")[0].style.backgroundImage = "url(" + actImg + ")";
     if(getQueryStr.indexOf("?") == -1){  
-      console.log("USE:   ", props.location.case, CurCasing);    
       var tcase = props.location.case || CurCasing;
       //props.location.case = tcase;
       
@@ -346,7 +344,6 @@ function LetterFormation(props) {
             r.style.setProperty("--tabBorder", a.getImg[cc].tBorder);
             
 					}
-          console.log("AAA: =========== ",a.case);
           if(a.case!=null){
             CurCasing = a.case;
           }
@@ -420,9 +417,7 @@ function LetterFormation(props) {
       <MyConsumer>
         {(a) => {
           var text;
-          console.log(a.case, " =========== ", CurCasing);
           a.case = a.case || CurCasing;
-          
           switch (a.case){
             case "lower":
               text = "Letter formation - Lower Case"

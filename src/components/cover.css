@@ -109,6 +109,9 @@
   margin-left: 515px;
   height: 420px;
 }
+.toc-cont > div{
+  padding-top: 3px;
+}
 
 .lftToc {
   height: 420px;

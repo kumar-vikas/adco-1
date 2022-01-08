@@ -183,7 +183,7 @@ class Warmup extends Component {
                     <img alt="" src={animationImg} />
                   </div>
                   <div className="activity-name-block type4">
-                    <p className="activity-name small">Video</p>
+                    <p className="activity-name small">5 videos</p>
                   </div>
                 </div>
                 <div className="next-pre-wrap invisible">

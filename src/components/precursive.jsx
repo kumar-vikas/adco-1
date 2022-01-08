@@ -9,6 +9,7 @@ import printImg from "../images/print-btn.png";
 import { NavLink } from 'react-router-dom';
 import info143 from "../images/info-i143.png";
 import { MyConsumer } from './context';
+import warmupThum from '../images/warm-up-thum.png';
 import customContext from "./customContext";
 
 class Precursive extends Component{
@@ -131,7 +132,8 @@ class Precursive extends Component{
 	  }
 
     render() {
-        return (
+		const notActive = (this.currentTabName === "Cursive E" || this.currentTabName === "Cursive F")?true:false;
+		return (
 
 			<div className="activity-base" style={{backgroundImage: "url("+this.actImg+")"}}>
   	<div className="dailoug-block-img">
@@ -184,8 +186,9 @@ class Precursive extends Component{
 							<p className="activity-name medium">Warm-Up</p>
 							</div>
 							<div className="activity-bubble circle text">
-							<div className="">
-							<p>Warm-up Video to follow!</p>
+							<div className="warm-up-thumb">
+		  						{ !notActive && <img src={warmupThum} alt="warm-up-thumb"/>}
+								{ !notActive && <p class="thumb-text">5 Videos</p>}
 							</div>
 							</div>
 						</NavLink>
