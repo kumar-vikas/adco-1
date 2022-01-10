@@ -33,7 +33,7 @@ function App(props) {
       {"name":"Cursive B", "disabled":[]},
       {"name":"Cursive C", "disabled":[]},
       {"name":"Cursive D", "disabled":[]},
-      {"name":"Cursive E", "disabled":["games", "printable", "warmUp"]},
+      {"name":"Cursive E", "disabled":["games", "warmUp"]},
       {"name":"Cursive F", "disabled":["games", "warmUp"]}
     ],
     activeTab: null

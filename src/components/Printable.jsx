@@ -67,25 +67,30 @@ class Printable extends Component{
 										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
 										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
 										{"display":"Cursive C Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-C.pdf"},
-										{"display":"Cursive C Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-C.pdf"}
+										{"display":"Cursive C Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-C.pdf"},
+										{"display":"Bridge to Cursive Handwriting Booklet", "path":"assets/Printables/Cursive-Bridge-Booklet.pdf"}
+
 					  			],
 									"CursiveD":[
 										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
 										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
 										{"display":"Cursive D Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-D.pdf"},
-										{"display":"Cursive D Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-D.pdf"}
+										{"display":"Cursive D Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-D.pdf"},
+										{"display":"Bridge to Cursive Handwriting Booklet", "path":"assets/Printables/Cursive-Bridge-Booklet.pdf"}
 					  			],
 									"CursiveE":[
 										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
 										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
 										{"display":"Cursive E Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-E.pdf"},
-										{"display":"Cursive E Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-E.pdf"}
+										{"display":"Cursive E Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-E.pdf"},
+										{"display":"Bridge to Cursive Handwriting Booklet", "path":"assets/Printables/Cursive-Bridge-Booklet.pdf"}
 					  			],
 									"CursiveF":[
 										{"display":"Handwriting Song Lyrics", "path":"assets/Printables/TheEdcoHandwritingSong.pdf"},
 										{"display":"Handwriting Policy", "path":"assets/Printables/HandwritingPolicy.pdf"},
 										{"display":"Cursive F Pace of Progress", "path":"assets/Printables/Pace-of-Progress-Cursive-F.pdf"},
-										{"display":"Cursive F Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-F.pdf"}
+										{"display":"Cursive F Teacher Assessment", "path":"assets/Printables/TeacherAssessment-Cursive-F.pdf"},
+										{"display":"Bridge to Cursive Handwriting Booklet", "path":"assets/Printables/Cursive-Bridge-Booklet.pdf"}
 					  			],
 							}
 
