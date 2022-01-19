@@ -10,11 +10,11 @@ class Warmup extends Component {
     this.func = null;
     this.actImg = null;
     this.vidID=1;
-    this.videos = ["Hand-Warm-Up.mp4",
-                   "Head-Shoulders-Knees-and-Toes.mp4",
-                   "Itsy-Bitsy-Spider.mp4",
-                   "Lets-Write-That-Letter.mp4",
-                   "Pencil-Grip-Video.mp4"
+    this.videos = ["Handwriting_WarmUp_HandWarmUp.mp4",
+                   "Handwriting_WarmUp_HSKT.mp4",
+                   "Handwriting_WarmUp_ItsyBitsy.mp4",
+                   "Handwriting_WarmUp_HandwritingSong.mp4",
+                   "Handwriting_WarmUp_PencilGrip.mp4"
                   ];
     this.state = {
       src: this.props.src,
